@@ -48,6 +48,14 @@ Route::prefix('admin')->group(function()
 	Route::get('/pages/edit/{id}', 'Admin\PagesController@PageComposer')->name('admin.pages.edit');
 	Route::get('/pages/builder/{id}', 'Admin\PagesController@PageEdit')->name('admin.pages.builder');
 	Route::post('/pages/update', 'Admin\PagesController@doDpdate')->name('admin.pages.update');
+
+	Route::get('/posts', 'Admin\PostsController@index')->name('admin.posts');
+	Route::get('/posts/add', 'Admin\PostsController@create')->name('admin.posts.add');
+	Route::post('/posts/doadd', 'Admin\PostsController@doCreate')->name('admin.posts.doadd');
+
+	Route::get('/posts/edit/{id}', 'Admin\PostsController@PageComposer')->name('admin.posts.edit');
+	Route::get('/pages/builder/{id}', 'Admin\PagesController@PageEdit')->name('admin.posts.builder');
+	Route::post('/posts/update', 'Admin\PostsController@doDpdate')->name('admin.posts.update');
 	
 });
 

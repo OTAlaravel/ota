@@ -83,7 +83,7 @@
             var fileInput = photoEdit.next();
             photoEdit.on('click', function (e) {
                 e.preventDefault();
-                
+               
                 fileInput.trigger('click');
             });
             fileInput.on('change', function () {
@@ -93,6 +93,7 @@
                     
                     reader.addEventListener('load', function (e) {
                         var img = keditor.getSettingComponent().find('img');
+                         alert('ff');
                         img.attr('src', e.target.result);
                         img.css({
                             width: '',
@@ -111,6 +112,7 @@
             
             var inputAlign = form.find('#photo-align');
             inputAlign.on('change', function () {
+
                 var panel = keditor.getSettingComponent().find('.photo-panel');
                 panel.css('text-align', this.value);
             });
@@ -152,6 +154,7 @@
             });
             inputHeight.on('change', function () {
                 var img = keditor.getSettingComponent().find('img');
+
                 var newHeight = +this.value;
                 var newWidth = Math.round(newHeight * self.ratio);
                 

@@ -37,8 +37,8 @@
         </div> -->
         <div data-keditor="html" style="border:1px;">
            @if($pageinfo->page_description)
-            <div id="content-area" >
-             {{$pageinfo->page_description}}
+             <div id="content-area" >
+               <?php echo $pageinfo->page_description ; ?>
              </div>
             @else
               @if($page->template =='custom')         
@@ -62,6 +62,7 @@
         <!-- Start of KEditor scripts -->
         <script type="text/javascript" src="{{ asset('backend/keditor/dist/js/keditor.min.js')}}"></script>
         <script type="text/javascript" src="{{ asset('backend/keditor/dist/js/keditor-components.min.js')}}"></script>
+
         <!-- End of KEditor scripts -->
         <script type="text/javascript" src="{{ asset('backend/keditor/sample/plugins/code-prettify/src/prettify.js')}}"></script>
         <script type="text/javascript" src="{{ asset('backend/keditor/sample/plugins/js-beautify-1.7.5/js/lib/beautify.js')}}"></script>

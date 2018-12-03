@@ -27,10 +27,10 @@
                         </a>
                     </li>
 
-                    <li class="nav-item ">
-                        <a class="nav-link" href="../examples/table.html">
-                            <i class="material-icons">content_paste</i>
-                            <p>Posts Management</p>
+                    <li class="nav-item {{ Request::is('admin/posts*') ? 'active' : '' }}  ">
+                        <a class="nav-link" href="{{ route('admin.posts') }}">
+                            <i class="material-icons">library_books</i>
+                            <p>Posts management</p>
                         </a>
                     </li>
 

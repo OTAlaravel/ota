@@ -36,21 +36,23 @@
         btnViewSave.on('click', function () {
            	 $(".loader").show();
              var Content = $('#content-area').keditor('getContent');
-             alert(Content);
+             //alert(Content);
              var values = {
              			"_token": token,
             			'page_content': Content,
-           				 'id': page_id
+           				'id': page_id
     			};
-             $.ajax({
+               $.ajax({
 				    type: 'post',
 				    url: ajax_url,
 				    data: values,
 				    success: function () {
-				             alert('form was submitted');
+				             
 				              setTimeout(function() 
 						       {
 					            $(".loader").hide();
+					            alert('form was submitted');
+					            //location.reload();
 						  	}, 2000);
 				       }
 				     });
