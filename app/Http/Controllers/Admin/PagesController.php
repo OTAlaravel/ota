@@ -19,7 +19,9 @@ class PagesController extends Controller
 
     public function index()
     {
+      echo $lang =  \App::getLocale(); // 'fr'
         $pages = Pages::all();
+        //var_dump($pages);
         return view('admin.pages.index', compact('pages'));
     }
 
@@ -30,21 +32,22 @@ class PagesController extends Controller
 
     public function doCreate(Request $request){
          $pageInfo = Pages::create($request->all());
-         $pageInfo = json_encode($pageInfo);
+         echo $pageInfo = json_encode($pageInfo);
     	 
     }
     
-   public function PageComposer($id){
-        $lang= \App::getLocale();
+   public function PageComposer($lang,$id){
+        //$lang= \App::getLocale();
         $page =  Pages::where('id', '=' , $id)->get()->first();
         $page->translate($lang);
         
          return view('admin.pages.builder', compact('page'));
      }
 
-    public function edit($id)
+    public function edit($lang,$id)
     {  
         $page =  Pages::where('id', '=' , $id)->get()->first();
+        $page->translate($lang);
         return view('admin.pages.builder', compact('page'));
     }
 

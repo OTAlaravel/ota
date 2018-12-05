@@ -13,7 +13,10 @@
                         <div class="card-header card-header-warning">
                             <h3 class="card-title ">Pages management 
                                 <div class="float-right">
-                                    <a href="{{ route('admin.pages.add') }}" class="btn-sm btn-success btn-round "> 
+                                    <select id="sitelang" name="sitelang" class="browser-default btn-round custom-select">
+                                    <?php @langOption(); ?>
+                                  </select>
+                                    <a href="{{route('admin.pages.add') }}" class="btn-sm btn-success btn-round "> 
                                     <i class="material-icons">create</i> New</a>
                                 </div>
 
@@ -28,29 +31,32 @@
                                     <th>Action</th>
                                 </thead>
                                 <tbody>
+                                <?php $lang = @\Session::get('language'); ?>
+                                @foreach ($pages as $page)
 
-                                @foreach ($pages as $page)  
+                                  <?php 
+                                  if($page->locale==$lang){  ?>
                                     <tr>
                                         <td>{{ $page->id }}</td>
                                         <td>{{ $page->page_title }}</td>
                                         <td>{{ $page->page_slug }}</td>
                                         <td>{{ $page->created_at}}</td>
                                         <td class="text-primary">
-                                           <a href="{{ route('admin.pages.edit', $page->id) }}">
+                                           <a href="{{ route('admin.pages.edit', ['lang' => 'en', 'id' => $page->id] ) }}">
                                                <i class="fa fa-cog"></i>
                                            </a>
-                                           <a href="{{ route('admin.pages.edit', $page->id) }}">
+                                           <a href="{{ route('admin.pages.edit', ['lang' => $page->locale, 'id' => $page->id]) }}">
                                                <i class="fa fa-edit"></i>
                                            </a>
-                                            <a href="{{ route('admin.pages.edit', $page->id) }}">
+                                            <a href="{{ route('admin.pages.edit', ['lang' => $page->locale, 'id' => $page->id]) }}">
                                                <i class="fa fa-trash" aria-hidden="true"></i>
                                            </a>
-
-                                            <a href="{{ route('admin.pages.edit', $page->id) }}">
+                                            <a href="{{ route('admin.pages.edit', ['lang' => 'en', 'id' => $page->id]) }}">
                                                <i class="fa fa-trash" aria-hidden="true"></i>
                                            </a>
                                         </td>
                                       </tr>
+                                      <?php } ?>
                                     @endforeach
                                 </tbody>
                             </table>

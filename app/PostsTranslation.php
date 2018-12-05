@@ -8,5 +8,5 @@ class PostsTranslation extends Model
 {
       public $timestamps = false;
 
-        protected $fillable = ['post_title','post_slug', 'post_description'];
+        protected $fillable = ['locale','post_title','post_slug', 'post_description'];
 }

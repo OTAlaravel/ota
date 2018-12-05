@@ -8,5 +8,5 @@ class PagesTranslation extends Model
 {
         public $timestamps = false;
 
-        protected $fillable = ['page_title','page_slug', 'page_description'];
+        protected $fillable = ['locale','page_title','page_slug', 'page_description'];
 }

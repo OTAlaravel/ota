@@ -13,6 +13,9 @@
                         <div class="card-header card-header-warning">
                             <h3 class="card-title ">Posts management 
                                 <div class="float-right">
+                                 <select id="sitelang" name="sitelang" class="browser-default btn-round custom-select">
+                                    <?php @langOption(); ?>
+                                  </select>
                                     <a href="{{ route('admin.posts.add') }}" class="btn-sm btn-success btn-round "> 
                                     <i class="material-icons">create</i> New</a>
                                 </div>
@@ -28,8 +31,10 @@
                                     <th>Action</th>
                                 </thead>
                                 <tbody>
-
-                                @foreach ($posts as $post)  
+                                <?php $lang = @\Session::get('language'); ?>
+                                @foreach ($posts as $post) 
+                                  <?php 
+                                  if($page->locale==$lang){  ?> 
                                     <tr>
                                         <td>{{ $post->id }}</td>
                                         <td>{{ $post->post_title }}</td>
@@ -51,6 +56,7 @@
                                            </a>
                                         </td>
                                       </tr>
+                                      <?php } ?>
                                     @endforeach
                                 </tbody>
                             </table>

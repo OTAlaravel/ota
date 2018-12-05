@@ -8,7 +8,7 @@ class Pages extends Model
 {
     use \Dimsav\Translatable\Translatable;
 
-    public $translatedAttributes = ['page_title','page_slug','page_description'];
+    public $translatedAttributes = ['locale','page_slug','page_title','page_slug','page_description'];
 
     protected $fillable = ['page_title','page_slug', 'page_description'];
 }

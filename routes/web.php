@@ -33,6 +33,7 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function()
 Route::prefix('admin')->group(function()
 {
 	Route::get('/', 'Admin\AdminController@index')->name('admin.dashboard');
+	Route::post('/setlang', 'Admin\AdminController@setlang')->name('admin.setlang');
 	Route::get('/login', 'Auth\AdminLoginController@showLoginForm')->name('admin.login');
 	Route::post('/login', 'Auth\AdminLoginController@login')->name('admin.login.submit');
 	Route::get('/logout', 'Auth\AdminLoginController@logout')->name('admin.logout');
@@ -45,17 +46,16 @@ Route::prefix('admin')->group(function()
 	Route::get('/pages/add', 'Admin\PagesController@create')->name('admin.pages.add');
 	Route::post('/pages/doadd', 'Admin\PagesController@doCreate')->name('admin.pages.doadd');
 
-	Route::get('/pages/edit/{id}', 'Admin\PagesController@PageComposer')->name('admin.pages.edit');
-	Route::get('/pages/builder/{id}', 'Admin\PagesController@PageEdit')->name('admin.pages.builder');
+	Route::get('/pages/edit/{lang}/{id}', 'Admin\PagesController@PageComposer')->name('admin.pages.edit');
+	Route::get('/pages/builder/{lang}/{id}', 'Admin\PagesController@PageEdit')->name('admin.pages.builder');
 	Route::post('/pages/update', 'Admin\PagesController@doDpdate')->name('admin.pages.update');
 
 	Route::get('/posts', 'Admin\PostsController@index')->name('admin.posts');
 	Route::get('/posts/add', 'Admin\PostsController@create')->name('admin.posts.add');
 	Route::post('/posts/doadd', 'Admin\PostsController@doCreate')->name('admin.posts.doadd');
 
-	Route::get('/posts/edit/{id}', 'Admin\PostsController@PageComposer')->name('admin.posts.edit');
+	Route::get('/posts/edit/{lang}/{id}', 'Admin\PostsController@PageComposer')->name('admin.posts.edit');
 	Route::get('/pages/builder/{id}', 'Admin\PagesController@PageEdit')->name('admin.posts.builder');
 	Route::post('/posts/update', 'Admin\PostsController@doDpdate')->name('admin.posts.update');
-	
 });
 

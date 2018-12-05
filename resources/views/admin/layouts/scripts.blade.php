@@ -15,7 +15,7 @@
 <script src="{{ asset('backend/assets/js/plugins/jquery.dataTables.js') }}"></script>
 <script src="{{ asset('backend/assets/js/plugins/dataTables.bootstrap4.js') }}"></script>
 <script src="{{ asset('backend/assets/js/plugins/data-table.js') }}"></script>
-
+<script src="{{ asset('backend/assets/js/app.js') }}"></script>
 <script type="text/javascript">
     $(document).ready(function() {
 
@@ -29,13 +29,7 @@
         demo.initCharts();
 
     });
- window.onload= function(){
- 	setTimeout(
-	  function() 
-	 	 {
-	   		 $(".loader").hide();
-	  	 }, 2000);   
-	 }
+
 </script>
 
  @yield('th_foot')

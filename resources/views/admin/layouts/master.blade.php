@@ -19,6 +19,10 @@
     <link href="{{ asset('backend/assets/css/main.css') }}" rel="stylesheet" />
     <!-- iframe removal -->
     <link href="{{ asset('backend/assets/css/loader.css') }}" rel="stylesheet" />
+    <script type="text/javascript"> 
+        var base_url = "{{ asset('/')}}";
+        var token   =  "{{ csrf_token()}}";
+        </script>
      @yield('th_head')
 </head>
 <body class="">

@@ -15,11 +15,12 @@ $(function() {
         submitButton.prop('disabled', 'disabled');
        }
       }).done(function(data) {
-        alert(data.original);
+        
         setTimeout(function() 
         {
          //submitButton.prop('disabled', false);
          $(".loader").hide();
+         
       }, 2000);
       
     });
@@ -34,15 +35,6 @@ $(function() {
             
    });
 
-  $("#sitelang").change(function(event) {
-     $(".loader").show();
-      var lang =this.value;
-      setTimeout(function() 
-       {
-         $('#lang_code').val(lang);
-         $(".loader").hide();
-      }, 2000);
-  });
 });
 
 

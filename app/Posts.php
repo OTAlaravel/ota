@@ -8,7 +8,7 @@ class Posts extends Model
 {
    use \Dimsav\Translatable\Translatable;
 
-    public $translatedAttributes = ['post_title','post_slug','post_description'];
+    public $translatedAttributes = ['locale','post_title','post_slug','post_description'];
 
-    protected $fillable = ['post_title','post_slug', 'post_description'];
+    protected $fillable = ['locale','post_title','post_slug', 'post_description'];
 }

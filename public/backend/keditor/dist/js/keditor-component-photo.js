@@ -93,7 +93,6 @@
                     
                     reader.addEventListener('load', function (e) {
                         var img = keditor.getSettingComponent().find('img');
-                         alert('ff');
                         img.attr('src', e.target.result);
                         img.css({
                             width: '',

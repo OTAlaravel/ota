@@ -4,7 +4,7 @@
   height: 100%;
   opacity: .9;
   background: #9c9c9c;
-  position: absolute; 
+  position: fixed; 
   z-index: 99999;
 }
 

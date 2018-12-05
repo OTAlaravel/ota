@@ -1,8 +1,14 @@
 <?php
 function langOption(){
  		$data=Config::get('laravellocalization.supportedLocales');
+ 		$lang = @\Session::get('language');
 	 		foreach ($data as $key => $value) {
-	 			echo '<option value="'.$key.'">'.$value['name'].'</option>';
+	 			$selected='';
+	 			if($key==$lang){
+	 				$selected='selected="selected"';
+	 			}
+
+	 			echo '<option value="'.$key.'" '.$selected.' >'.$value['name'].'</option>';
 	 		}
  	}
 

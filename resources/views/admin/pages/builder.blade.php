@@ -1,11 +1,10 @@
 <!DOCTYPE html>
-<pre>
 <?php 
   //var_dump($page->template);
    $pageinfo = $page->translate();
   //var_dump($pageinfo->page_description);
  ?>
-</pre>
+
 <html lang="en">
     <head>
         <meta charset="UTF-8" />
@@ -21,9 +20,10 @@
         <link rel="stylesheet" type="text/css" href="{{ asset('backend/keditor/sample/css/examples.css')}}" />
         <link rel="stylesheet" href="{{ asset('backend/assets/css/loader.css') }}" rel="stylesheet" />
     <script type="text/javascript">
+      var base_url = "<?php echo asset('/');  ?>";
       var ajax_url = "{{route('admin.pages.update')}}";
       var page_id  = "{{$page->id}}";
-      var token   =  "{{ csrf_token() }}";
+      var token   =  "{{ csrf_token()}}";
     </script>
     </head>
     <body>
@@ -37,16 +37,15 @@
         </div> -->
         <div data-keditor="html" style="border:1px;">
            @if($pageinfo->page_description)
-             <div id="content-area" >
-               <?php echo $pageinfo->page_description ; ?>
-             </div>
+              <div id="content-area" >
+                <?php echo $pageinfo->page_description ; ?>
+              </div>
             @else
               @if($page->template =='custom')         
                <div id="content-area">
                  <section><div class="row"><div class="col-md-12" data-type="container-content"><section data-type="component-text">New content</section></div></div></section>
                </div>   
-               @else
-                         
+               @else            
               @endif
             @endif  
              

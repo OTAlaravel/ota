@@ -11,12 +11,14 @@
         var btnViewContent = $('<button type="button" class="view-content"><i class="fa fa-file-text-o"></i> Get content</button>');
         var btnViewSave = $('<button type="button" class="save-data"><i class="fa fa-file-text-o"></i> Update </button>');
         var btnViewPreview = $('<button type="button" class="view-preview"><i class="fa fa-eye"></i> Pre View</button>');
+        var btnSelectLang = $('<select class="button" class="select-lang"><option value="en">EN</option><option>FR</option></select>');
 
         toolbar.appendTo(document.body);
         //toolbar.append(btnViewSource);
         //toolbar.append(btnViewContent);
         toolbar.append(btnViewSave);
         toolbar.append(btnViewPreview);
+        toolbar.append(btnSelectLang);
 
         btnViewSource.on('click', function () {
             $('#modal-source').modal('show');
@@ -51,7 +53,9 @@
 				              setTimeout(function() 
 						       {
 					            $(".loader").hide();
-					            alert('form was submitted');
+                                var modal = $('#modal-content');
+                                modal.find('.content-html').html('');
+                                modal.modal('show');
 					            //location.reload();
 						  	}, 2000);
 				       }
@@ -80,7 +84,7 @@
             '        <div class="modal-content">' +
             '            <div class="modal-header">' +
             '                <button type="button" class="close" data-dismiss="modal">&times;</button>' +
-            '                <h4 class="modal-title">Content</h4>' +
+            '                <h4 class="modal-title">Success</h4>' +
             '            </div>' +
             '            <div class="modal-body">' +
             '                <pre class="prettyprint lang-html content-html"></pre>' +
@@ -91,7 +95,7 @@
             '        </div>' +
             '    </div>' +
             '</div>'
-        );
+           );
 
         modal.appendTo(document.body);
     }
