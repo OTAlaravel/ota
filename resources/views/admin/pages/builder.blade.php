@@ -19,12 +19,14 @@
         <link rel="stylesheet" type="text/css" href="{{ asset('backend/keditor/sample/plugins/code-prettify/src/prettify.css')}}" />
         <link rel="stylesheet" type="text/css" href="{{ asset('backend/keditor/sample/css/examples.css')}}" />
         <link rel="stylesheet" href="{{ asset('backend/assets/css/loader.css') }}" rel="stylesheet" />
-    <script type="text/javascript">
-      var base_url = "<?php echo asset('/');  ?>";
-      var ajax_url = "{{route('admin.pages.update')}}";
-      var page_id  = "{{$page->id}}";
-      var token   =  "{{ csrf_token()}}";
-    </script>
+        <link rel="stylesheet" href=" https://cdnjs.cloudflare.com/ajax/libs/bootstrap-sweetalert/1.0.1/sweetalert.css" rel="stylesheet" />
+       
+        <script type="text/javascript">
+          var base_url = "<?php echo asset('/');  ?>";
+          var ajax_url = "{{route('admin.pages.update')}}";
+          var page_id  = "{{$page->id}}";
+          var token   =  "{{ csrf_token()}}";
+        </script>
     </head>
     <body>
      <div class="loader">
@@ -66,7 +68,7 @@
         <script type="text/javascript" src="{{ asset('backend/keditor/sample/plugins/code-prettify/src/prettify.js')}}"></script>
         <script type="text/javascript" src="{{ asset('backend/keditor/sample/plugins/js-beautify-1.7.5/js/lib/beautify.js')}}"></script>
         <script type="text/javascript" src="{{ asset('backend/keditor/sample/plugins/js-beautify-1.7.5/js/lib/beautify-html.js')}}"></script>
-  
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-sweetalert/1.0.1/sweetalert.min.css" ></script>
         <script type="text/javascript" src="{{ asset('backend/assets/js/keditor.js')}}" data-keditor="script"></script>
         <style type="text/css">
         .keditor-content-area {

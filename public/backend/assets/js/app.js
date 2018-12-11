@@ -21,7 +21,13 @@ $(function() {
       });
    });
 });
+function openNav() {
+    document.getElementById("pageSetting").style.width = "250px";
+}
 
+function closeNav() {
+    document.getElementById("pageSetting").style.width = "0";
+}
  window.onload= function(){
   setTimeout(
     function() 

@@ -34,24 +34,29 @@
                                 <?php $lang = @\Session::get('language'); ?>
                                 @foreach ($posts as $post) 
                                   <?php 
-                                  if($page->locale==$lang){  ?> 
+                                  if($post->locale==$lang){  ?> 
                                     <tr>
                                         <td>{{ $post->id }}</td>
                                         <td>{{ $post->post_title }}</td>
                                         <td>{{ $post->post_slug }}</td>
                                         <td>{{ $post->created_at}}</td>
                                         <td class="text-primary">
-                                           <a href="{{ route('admin.pages.edit', $page->id) }}">
+                                           <a href="javascript:void(0);" onclick="openNav()">
                                                <i class="fa fa-cog"></i>
                                            </a>
-                                           <a href="{{ route('admin.pages.edit', $page->id) }}">
+                                           <a href="{{ route('admin.posts.edit', ['lang' => $post->locale, 'id' => $post->id]) }}">
                                                <i class="fa fa-edit"></i>
                                            </a>
-                                            <a href="{{ route('admin.pages.edit', $page->id) }}">
-                                               <i class="fa fa-trash" aria-hidden="true"></i>
-                                           </a>
-
-                                            <a href="{{ route('admin.pages.edit', $page->id) }}">
+                                             @if($post->status==1)
+                                              <a href="{{ route('admin.posts.edit', ['lang' => $post->locale, 'id' => $post->id]) }}" style="color:#4caf50">
+                                                 <i  class="fa fa-toggle-on" aria-hidden="true"></i>
+                                             </a>
+                                             @else
+                                             <a href="{{ route('admin.posts.edit', ['lang' => $post->locale, 'id' => $post->id]) }}" style="color:red">
+                                                 <i class="fa fa-toggle-off" aria-hidden="true"></i>
+                                             </a>
+                                             @endif
+                                            <a href="{{ route('admin.posts.edit', ['lang' => 'en', 'id' => $post->id]) }}">
                                                <i class="fa fa-trash" aria-hidden="true"></i>
                                            </a>
                                         </td>

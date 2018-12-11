@@ -34,25 +34,20 @@ class PostsController extends Controller
     	 
     }
     
-   public function PageComposer($id){
-        $lang= \App::getLocale();
-        $post =  Posts::where('id', '=' , $id)->get()->first();
-        $post->translate($lang);
-        
-         return view('admin.posts.builder', compact('post'));
-     }
 
-    public function edit($id)
+
+    public function postEdit($lang,$id)
     {  
         $post =  Posts::where('id', '=' , $id)->get()->first();
-        return view('admin.posts.builder', compact('post'));
+        $post->translate($lang);
+        return view('admin.posts.edit', compact('post'));
     }
 
-   public function doDpdate(Request $request){
+   public function doUpdate(Request $request){
        $lang = \App::getLocale();
        $post = Posts::where('id', Input::get('id'))->first();
        $post->translate($lang)->post_description = Input::get('post_content');
-       $page->save();
+       $post->save();
        echo 1;
     exit;
    } 

@@ -15,13 +15,15 @@ $(function() {
         submitButton.prop('disabled', 'disabled');
        }
       }).done(function(data) {
-        
+        var obj = jQuery.parseJSON(data);
+        alert(obj.id);
         setTimeout(function() 
         {
-         //submitButton.prop('disabled', false);
-         $(".loader").hide();
+           var url = base_url+'admin/pages/edit/'+obj.lang+'/'+obj.id;
+           $(".loader").hide();
+           window.location.href = url;
          
-      }, 2000);
+        }, 2000);
       
     });
   });

@@ -42,15 +42,21 @@
                                         <td>{{ $page->page_slug }}</td>
                                         <td>{{ $page->created_at}}</td>
                                         <td class="text-primary">
-                                           <a href="{{ route('admin.pages.edit', ['lang' => 'en', 'id' => $page->id] ) }}">
+                                           <a href="javascript:void(0);" onclick="openNav()">
                                                <i class="fa fa-cog"></i>
                                            </a>
                                            <a href="{{ route('admin.pages.edit', ['lang' => $page->locale, 'id' => $page->id]) }}">
                                                <i class="fa fa-edit"></i>
                                            </a>
-                                            <a href="{{ route('admin.pages.edit', ['lang' => $page->locale, 'id' => $page->id]) }}">
-                                               <i class="fa fa-trash" aria-hidden="true"></i>
-                                           </a>
+                                             @if($page->status==1)
+                                              <a href="{{ route('admin.pages.edit', ['lang' => $page->locale, 'id' => $page->id]) }}" style="color:#4caf50">
+                                                 <i  class="fa fa-toggle-on" aria-hidden="true"></i>
+                                             </a>
+                                             @else
+                                             <a href="{{ route('admin.pages.edit', ['lang' => $page->locale, 'id' => $page->id]) }}" style="color:red">
+                                                 <i class="fa fa-toggle-off" aria-hidden="true"></i>
+                                             </a>
+                                             @endif
                                             <a href="{{ route('admin.pages.edit', ['lang' => 'en', 'id' => $page->id]) }}">
                                                <i class="fa fa-trash" aria-hidden="true"></i>
                                            </a>

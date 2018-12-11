@@ -15,7 +15,7 @@ class CreatePostsTable extends Migration
     {
         Schema::create('posts', function (Blueprint $table) {
             $table->increments('id');
-            $table->boolean('status');
+            $table->boolean('status')->default(1);
             $table->timestamps();
             
         });
@@ -26,7 +26,7 @@ class CreatePostsTable extends Migration
             $table->string('locale')->index();
             $table->string('post_title');
             $table->string('post_slug');
-            $table->longText('post_description');
+            $table->longText('post_description')->default('NULL');
             $table->unique(['posts_id','locale']);
             $table->foreign('posts_id')->references('id')->on('posts')->onDelete('cascade');
         });

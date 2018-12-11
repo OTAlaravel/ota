@@ -45,17 +45,19 @@ Route::prefix('admin')->group(function()
 	Route::get('/pages', 'Admin\PagesController@index')->name('admin.pages');
 	Route::get('/pages/add', 'Admin\PagesController@create')->name('admin.pages.add');
 	Route::post('/pages/doadd', 'Admin\PagesController@doCreate')->name('admin.pages.doadd');
-
 	Route::get('/pages/edit/{lang}/{id}', 'Admin\PagesController@PageComposer')->name('admin.pages.edit');
 	Route::get('/pages/builder/{lang}/{id}', 'Admin\PagesController@PageEdit')->name('admin.pages.builder');
 	Route::post('/pages/update', 'Admin\PagesController@doDpdate')->name('admin.pages.update');
+	Route::post('/pages/change/status', 'Admin\PagesController@doChange')->name('admin.pages.change.status');
+    Route::post('/pages/del/{lang}/{id}', 'Admin\PagesController@doDelete')->name('admin.pages.del');
 
 	Route::get('/posts', 'Admin\PostsController@index')->name('admin.posts');
 	Route::get('/posts/add', 'Admin\PostsController@create')->name('admin.posts.add');
 	Route::post('/posts/doadd', 'Admin\PostsController@doCreate')->name('admin.posts.doadd');
-
-	Route::get('/posts/edit/{lang}/{id}', 'Admin\PostsController@PageComposer')->name('admin.posts.edit');
-	Route::get('/pages/builder/{id}', 'Admin\PagesController@PageEdit')->name('admin.posts.builder');
+	Route::get('/posts/edit/{lang}/{id}', 'Admin\PostsController@postEdit')->name('admin.posts.edit');
 	Route::post('/posts/update', 'Admin\PostsController@doDpdate')->name('admin.posts.update');
+	Route::post('/posts/change/status', 'Admin\PostsController@doChange')->name('admin.posts.change.status');
+	Route::post('/posts/del/{lang}/{id}', 'Admin\PostsController@doDelete')->name('admin.posts.del');
+
 });
 

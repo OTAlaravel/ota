@@ -7,18 +7,20 @@
 
     function initToolbar() {
         var toolbar = $('<div class="toolbar"></div>');
-        var btnViewSource = $('<button type="button" class="view-source"><i class="fa fa-code"></i> View source</button>');
+        var btnViewSource =  $('<button type="button" class="view-source"><i class="fa fa-code"></i> View source</button>');
         var btnViewContent = $('<button type="button" class="view-content"><i class="fa fa-file-text-o"></i> Get content</button>');
-        var btnViewSave = $('<button type="button" class="save-data"><i class="fa fa-file-text-o"></i> Update </button>');
+        var btnViewSave =    $('<button type="button" class="save-data"><i class="fa fa-file-text-o"></i> Update </button>');
         var btnViewPreview = $('<button type="button" class="view-preview"><i class="fa fa-eye"></i> Pre View</button>');
-        var btnSelectLang = $('<select class="button" class="select-lang"><option value="en">EN</option><option>FR</option></select>');
+        var btnBackpage =    $('<button type="button" class="view-preview"><i class="fa fa-back"></i> Back</button>');
+        var btnSelectLang =  $('<select class="button" class="select-lang"><option value="en">EN</option><option>FR</option></select>');
 
         toolbar.appendTo(document.body);
         //toolbar.append(btnViewSource);
         //toolbar.append(btnViewContent);
         toolbar.append(btnViewSave);
         toolbar.append(btnViewPreview);
-        toolbar.append(btnSelectLang);
+        toolbar.append(btnBackpage);
+        //toolbar.append(btnSelectLang);
 
         btnViewSource.on('click', function () {
             $('#modal-source').modal('show');
@@ -53,9 +55,9 @@
 				              setTimeout(function() 
 						       {
 					            $(".loader").hide();
-                                var modal = $('#modal-content');
-                                modal.find('.content-html').html('');
-                                modal.modal('show');
+                                 var modal = $('#modal-content');
+                                  modal.find('.content-html').html('');
+                                  modal.modal('show');
 					            //location.reload();
 						  	}, 2000);
 				       }
@@ -67,14 +69,14 @@
             var modal = $('#modal-content');
             setTimeout(function() 
 		     {
-			     
-			      modal.modal('show');
-			      modal.find('.content-html').html(
-	                 $('#content-area').keditor('getContent')
-	              );
 	              $(".loader").hide();
 		  	}, 2000); 
         });
+
+      btnBackpage.on('click', function () {
+         var url = base_url+'admin/pages';
+         window.location.href = url;
+      });
     }
 
     function initModalContent() {
@@ -87,7 +89,7 @@
             '                <h4 class="modal-title">Success</h4>' +
             '            </div>' +
             '            <div class="modal-body">' +
-            '                <pre class="prettyprint lang-html content-html"></pre>' +
+            '                <div class="prettyprint lang-html content-html"></div>' +
             '            </div>' +
             '            <div class="modal-footer">' +
             '                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>' +

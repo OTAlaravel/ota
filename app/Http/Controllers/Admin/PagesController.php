@@ -1,13 +1,12 @@
 <?php
+  namespace App\Http\Controllers\Admin;
+  use App\User;
+  use App\Admin;
+  use App\Pages;
 
-namespace App\Http\Controllers\Admin;
-use App\User;
-use App\Admin;
-use App\Pages;
-
-use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Input;
+  use Illuminate\Http\Request;
+  use App\Http\Controllers\Controller;
+  use Illuminate\Support\Facades\Input;
 
 class PagesController extends Controller
 {
@@ -19,7 +18,7 @@ class PagesController extends Controller
 
     public function index()
     {
-      echo $lang =  \App::getLocale(); // 'fr'
+        $lang =  \App::getLocale(); // 'fr'
         $pages = Pages::all();
         //var_dump($pages);
         return view('admin.pages.index', compact('pages'));
@@ -32,12 +31,14 @@ class PagesController extends Controller
 
     public function doCreate(Request $request){
          $pageInfo = Pages::create($request->all());
-         echo $pageInfo = json_encode($pageInfo);
+         //echo $pageInfo = json_encode($pageInfo);
+         $data  = array('id' =>$pageInfo->id ,'lang'=>$pageInfo->locale );
+         echo json_encode($data);
+         exit;
     	 
     }
     
    public function PageComposer($lang,$id){
-        //$lang= \App::getLocale();
         $page =  Pages::where('id', '=' , $id)->get()->first();
         $page->translate($lang);
         
@@ -57,7 +58,7 @@ class PagesController extends Controller
        $page->translate($lang)->page_description = Input::get('page_content');
        $page->save();
        echo 1;
-    exit;
+       exit;
    } 
 
 }
