@@ -33,15 +33,21 @@
                             <p>Posts management</p>
                         </a>
                     </li>
-
-                   <li class="nav-item ">
-                        <a class="nav-link" href="../examples/user.html">
-                            <i class="material-icons">person</i>
-                            <p>User Profile</p>
+                    <li class="nav-item {{ Request::is('admin/banners*') ? 'active' : '' }}  ">
+                        <a class="nav-link" href="{{ route('admin.banners') }}">
+                            <i class="material-icons">slideshow</i>
+                            <p>Banner management</p>
                         </a>
                     </li>
 
-                   <li class="nav-item ">
+                  <!--  <li class="nav-item ">
+                       <a class="nav-link" href="../examples/user.html">
+                           <i class="material-icons">person</i>
+                           <p>User Profile</p>
+                       </a>
+                   </li> -->
+
+                   <!-- <li class="nav-item ">
                         <a class="nav-link" href="../examples/table.html">
                             <i class="material-icons">content_paste</i>
                             <p>Table List</p>
@@ -70,7 +76,7 @@
                             <i class="material-icons">notifications</i>
                             <p>Notifications</p>
                         </a>
-                    </li> 
+                    </li>  -->
 
                 </ul>
             </div>
