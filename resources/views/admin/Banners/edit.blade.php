@@ -41,7 +41,10 @@
                             </div> 
                             <div class="card-body"> 
                             @include('admin.layouts.messages')
-                              <form id="EditBanner" method="post" action="{{ route('admin.banners.update', ['lang' => $banner->locale, 'id' => $banner->id]) }}" enctype="multipart/form-data">
+                            <?php 
+                            $lang = @\Session::get('language');
+                             ?>
+                              <form id="EditBanner" method="post" action="{{ route('admin.banners.update', ['lang' => $lang, 'id' => $banner->id]) }}" enctype="multipart/form-data">
                                 {{ csrf_field() }}
                                 <input type="hidden" id="lang_code" name="locale" value="en">
                                 <div class="row">

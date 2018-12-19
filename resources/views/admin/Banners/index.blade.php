@@ -31,11 +31,12 @@
                             <th>Action</th>
                         </thead>
                         <tbody>
-                            <?php $lang = @\Session::get('language'); 
+                            <?php $lang = @\Session::get('language');
                             ?>
                             @foreach($banners as $banner)
                             <?php 
-                            if(isset($banner->locale) == $lang){ ?>
+                            echo $banner->locale;
+                            if($banner->locale == $lang){ ?>
                             <tr>
                                 <td>{{ $banner->banners_title }}</td>
                                 <td><img src="{{ Storage::disk('local')->url($banner->banners_image) }}" alt="" width="80px" height="80px"></td>
