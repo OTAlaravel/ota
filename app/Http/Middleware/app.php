@@ -15,7 +15,7 @@ public function handle($request, Closure $next)
 {
 	if(!\Session::has('language'))
     {
-       \Session::put('locale', \Config::get('app.locale'));
+       \Session::put('language',\Config::get('app.locale'));
     }
 
     app()->setLocale(\Session::get('language'));

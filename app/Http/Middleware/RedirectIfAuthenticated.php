@@ -17,10 +17,10 @@ class RedirectIfAuthenticated
      */
     public function handle($request, Closure $next, $guard = null)
     {
-
         switch ($guard) {
-            case 'admin':
+          case 'admin':
                 if(Auth::guard($guard)->check()){
+                     \Session::put('language',\Config::get('app.locale'));
                     return redirect()->route('admin.dashboard');
                 }
                 break;
@@ -29,7 +29,7 @@ class RedirectIfAuthenticated
                 if (Auth::guard($guard)->check()) {
                     return redirect('/home');
                 }
-                break;
+            break;
         }
 
         

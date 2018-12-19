@@ -37,8 +37,8 @@
                                     <i class="material-icons">library_books</i> List</a>
                                 </div>
                               </h3>
-
                             </div>
+                            
                             <div class="card-body">
                               <form id="AddNewPost" method="post" action="{{ route('admin.posts.doadd') }}">
                                <input type="hidden" id="lang_code" name="locale" value="en">
