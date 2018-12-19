@@ -27,23 +27,9 @@ class BannersController extends Controller
     }
 
     public function doCreate(Request $request)
-    {
-        $this->validate($request, [
-            'banners_title' => 'required|string|max:255',
-            'banners_image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-        ]);
-        $file = $request->file('banners_image');
-        if($file){
-            $banners_image = $file->getClientOriginalName();
-            $path = $request->banners_image->store('public/uploads');
-            $banners =  new Banners();
-            $banners->banners_image = $path;
-            $banners->banners_title = $request->banners_title;
-            $banners->banners_description = $request->banners_description;
-            $banners->banners_link = $request->banners_link;
-            $banners->status = $request->status;
-            $banners->save();
-        }
+    {   
+        $lang =  \App::getLocale(); 
+        $Info = Banners::create($request->all());
         return redirect()->back()->with('message', 'Banner added successfully!');
     }
 

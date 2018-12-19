@@ -35,7 +35,7 @@
                             ?>
                             @foreach($banners as $banner)
                             <?php 
-                            if($banner->locale==$lang){ ?>
+                            if(isset($banner->locale) == $lang){ ?>
                             <tr>
                                 <td>{{ $banner->banners_title }}</td>
                                 <td><img src="{{ Storage::disk('local')->url($banner->banners_image) }}" alt="" width="80px" height="80px"></td>
