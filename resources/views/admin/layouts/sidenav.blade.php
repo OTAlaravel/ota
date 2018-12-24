@@ -39,6 +39,12 @@
                     <p>Banner management</p>
                 </a>
             </li>
+             <li class="nav-item {{ Request::is('admin/countries*') ? 'active' : '' }}  ">
+                <a class="nav-link" href="{{ route('admin.countries') }}">
+                    <i class="material-icons">list</i>
+                    <p>Country master</p>
+                </a>
+            </li>
 
                   <!--  <li class="nav-item ">
                        <a class="nav-link" href="../examples/user.html">

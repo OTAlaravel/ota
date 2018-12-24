@@ -66,5 +66,8 @@ Route::prefix('admin')->group(function()
 	Route::delete('/banners/del/{lang}/{id}', 'Admin\BannersController@doDelete')->name('admin.banners.del');
 	Route::post('/banners/update/{lang}/{id}', 'Admin\BannersController@update')->name('admin.banners.update');
 
+	Route::get('/countries', 'Admin\CountriesController@index')->name('admin.countries');
+	Route::get('/countries/add', 'Admin\CountriesController@create')->name('admin.countries.add');
+
 });
 
