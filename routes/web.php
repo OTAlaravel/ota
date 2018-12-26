@@ -63,11 +63,22 @@ Route::prefix('admin')->group(function()
 	Route::get('/banners/add', 'Admin\BannersController@create')->name('admin.banners.add');
 	Route::post('/banners/doadd', 'Admin\BannersController@doCreate')->name('admin.banners.doadd');
 	Route::get('/banners/edit/{lang}/{id}', 'Admin\BannersController@edit')->name('admin.banners.edit');
-	Route::delete('/banners/del/{lang}/{id}', 'Admin\BannersController@doDelete')->name('admin.banners.del');
 	Route::post('/banners/update/{lang}/{id}', 'Admin\BannersController@update')->name('admin.banners.update');
+	Route::delete('/banners/del/{lang}/{id}', 'Admin\BannersController@doDelete')->name('admin.banners.del');
 
 	Route::get('/countries', 'Admin\CountriesController@index')->name('admin.countries');
 	Route::get('/countries/add', 'Admin\CountriesController@create')->name('admin.countries.add');
+	Route::post('/countries/doadd', 'Admin\CountriesController@doadd')->name('admin.countries.doadd');
+	Route::get('/countries/edit/{lang}/{id}', 'Admin\CountriesController@edit')->name('admin.countries.edit');
+	Route::post('/countries/update/{lang}/{id}', 'Admin\CountriesController@update')->name('admin.countries.update');
+	Route::delete('/countries/del/{lang}/{id}', 'Admin\CountriesController@doDelete')->name('admin.countries.del');
+
+	Route::get('/states', 'Admin\StatesController@index')->name('admin.states');
+	Route::get('/states/add', 'Admin\StatesController@create')->name('admin.states.add');
+	Route::post('/states/doadd', 'Admin\StatesController@doadd')->name('admin.states.doadd');
+	Route::get('/states/edit/{lang}/{id}', 'Admin\StatesController@edit')->name('admin.states.edit');
+	Route::post('/states/update/{lang}/{id}', 'Admin\StatesController@update')->name('admin.states.update');
+	Route::delete('/states/del/{lang}/{id}', 'Admin\StatesController@doDelete')->name('admin.states.del');
 
 });
 

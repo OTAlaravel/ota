@@ -42,7 +42,13 @@
              <li class="nav-item {{ Request::is('admin/countries*') ? 'active' : '' }}  ">
                 <a class="nav-link" href="{{ route('admin.countries') }}">
                     <i class="material-icons">list</i>
-                    <p>Country master</p>
+                    <p>Country management</p>
+                </a>
+            </li>
+           <li class="nav-item {{ Request::is('admin/states*') ? 'active' : '' }}  ">
+                <a class="nav-link" href="{{ route('admin.states') }}">
+                    <i class="material-icons">list</i>
+                    <p>State management</p>
                 </a>
             </li>
 

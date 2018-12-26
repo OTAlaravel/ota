@@ -58,6 +58,7 @@ class BannersController extends Controller
             'banners_title' => 'required|string|max:255',
             'banners_image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
+        $lang =  \App::getLocale(); 
         $banners = Banners::find($id);
         $file = $request->file('banners_image');
         if($file){

@@ -20,5 +20,19 @@ function langOption(){
 	 		}
  	}
 
+ 	function countryOption($id=''){
+ 		$country = App\Countries::all();
+ 		foreach ($country as $key => $value) {
+ 			if(isset($id)){
+ 				if($value->id == $id){
+ 					$selected='selected="selected"';
+ 			    }else{
+ 			    	$selected='';
+ 			    }
+ 			}
+ 			echo '<option value="'.$value->id.'" '.$selected.' >'.$value->countries_name.'</option>';
+ 		}
+ 	}
+
  ?>
  

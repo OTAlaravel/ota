@@ -10,12 +10,12 @@
     <div class="container-fluid">
         <div class="card">
             <div class="card-header card-header-warning">
-                <h3 class="card-title ">Country Management
+                <h3 class="card-title ">State Management
                     <div class="float-right">
                         <select id="sitelang" name="sitelang" class="browser-default btn-round custom-select">
                             <?php @langOption(); ?>
                         </select>
-                        <a href="{{ route('admin.countries.add') }}" class="btn-sm btn-success btn-round "> 
+                        <a href="{{ route('admin.states.add') }}" class="btn-sm btn-success btn-round "> 
                             <i class="material-icons">create</i> New</a>
                         </div>
                     </div>
@@ -24,33 +24,29 @@
                        <table class="table" id="order-listing">
                         <thead class=" text-primary"> 
                             <th>Name</th>
-                            <th>Shortname</th>
-                            <th>Phonecode</th>
                             <th>Action</th>
                         </thead>
                         <tbody>
                             <?php $lang = @\Session::get('language');
                             ?>
-                            @foreach($countries as $country)
-                            @if($country->locale == $lang)
+                            @foreach($states as $state)
+                            @if($state->locale == $lang)
                             <tr>
-                                <td>{{ $country->countries_name }}</td>
-                                <td>{{ $country->countries_sortname}}</td>
-                                <td>{{ $country->countries_phonecode}}</td>
+                                <td>{{ $state->states_name }}</td>
                                 <td class="text-primary">
-                                    <a href="{{ route('admin.countries.edit', ['lang' => $country->locale, 'id' => $country->id]) }}" title="Edit">
+                                    <a href="{{ route('admin.states.edit', ['lang' => $state->locale, 'id' => $state->id]) }}" title="Edit">
                                      <i class="fa fa-edit"></i>
                                     </a>
-                                 @if($country->status==1)
-                                 <a href="{{ route('admin.countries.edit', ['lang' => $country->locale, 'id' => $country->id]) }}" style="color:#4caf50" title="Published">
+                                 @if($state->status==1)
+                                 <a href="{{ route('admin.states.edit', ['lang' => $state->locale, 'id' => $state->id]) }}" style="color:#4caf50" title="Published">
                                      <i  class="fa fa-toggle-on" aria-hidden="true"></i>
                                  </a>
                                  @else
-                                 <a href="{{ route('admin.countries.edit', ['lang' => $country->locale, 'id' => $country->id]) }}" style="color:red" title="Draft">
+                                 <a href="{{ route('admin.states.edit', ['lang' => $state->locale, 'id' => $state->id]) }}" style="color:red" title="Draft">
                                      <i class="fa fa-toggle-off" aria-hidden="true"></i>
                                  </a>
                                  @endif
-                                 <form id="delete-form-{{ $country->id }}" method="post" action="{{ route('admin.countries.del', ['lang' => $country->locale, 'id' => $country->id]) }}" style="display: none;">
+                                 <form id="delete-form-{{ $state->id }}" method="post" action="{{ route('admin.states.del', ['lang' => $state->locale, 'id' => $state->id]) }}" style="display: none;">
                                     {{ csrf_field() }}
                                     {{ method_field('DELETE') }}
                                 </form>
@@ -60,7 +56,7 @@
                                     icon: 'warning',
                                     buttons: true,
                                     dangerMode: true,
-                                }).then((willDelete) => {if(willDelete){event.preventDefault();document.getElementById('delete-form-{{ $country->id }}').submit();}else{}});" title="Delete">
+                                }).then((willDelete) => {if(willDelete){event.preventDefault();document.getElementById('delete-form-{{ $state->id }}').submit();}else{}});" title="Delete">
                                 <i class="fa fa-trash" aria-hidden="true"></i>
                             </a>
                         </td>

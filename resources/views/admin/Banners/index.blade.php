@@ -35,7 +35,6 @@
                             ?>
                             @foreach($banners as $banner)
                             <?php 
-                            echo $banner->locale;
                             if($banner->locale == $lang){ ?>
                             <tr>
                                 <td>{{ $banner->banners_title }}</td>
