@@ -53,17 +53,16 @@
             </li>
              <li class="nav-item {{ Request::is('admin/testimonials*') ? 'active' : '' }}  ">
                 <a class="nav-link" href="{{ route('admin.testimonials') }}">
-                    <i class="material-icons">thumb_up</i>
+                    <i class="material-icons">speaker_notes</i>
                     <p>Testimonials management</p>
                 </a>
             </li>
-
-                  <!--  <li class="nav-item ">
-                       <a class="nav-link" href="../examples/user.html">
-                           <i class="material-icons">person</i>
-                           <p>User Profile</p>
-                       </a>
-                   </li> -->
+          <li class="nav-item {{ Request::is('admin/accommodations*') ? 'active' : '' }}  ">
+               <a class="nav-link" href="{{ route('admin.accommodations') }}">
+                   <i class="material-icons">work</i>
+                   <p>Accommodations</p>
+               </a>
+           </li>
 
                    <!-- <li class="nav-item ">
                         <a class="nav-link" href="../examples/table.html">

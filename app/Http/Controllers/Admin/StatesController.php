@@ -40,6 +40,7 @@ class StatesController extends Controller
             'states_name' => 'required|string|max:255',
             'countries_id' => 'required|integer',
         ]);
+        $lang =  \App::getLocale();
         $stateInfo = States::create($request->all());
         return redirect()->back()->with('message', 'State added successfully!');
     }
