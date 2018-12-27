@@ -23,41 +23,58 @@
       <div class="col-md-12">
         <div class="card">
           <div class="card-header card-header-warning">
-            <h3 class="card-title">Add New State
+            <h3 class="card-title">Edit Testimonial
             <div class="float-right">
               <select id="sitelang" name="sitelang" class="browser-default btn-round custom-select">
                 <?php @langOption(); ?>
               </select>
-              <a href="{{ route('admin.states')}}" class="btn-sm btn-success btn-round ">
+              <a href="{{ route('admin.testimonials')}}" class="btn-sm btn-success btn-round ">
               <i class="material-icons">library_books</i> List</a>
             </div>
             </h3>
           </div>
           <div class="card-body">
             @include('admin.layouts.messages')
-            <form id="AddNewState" method="post" action="{{ route('admin.states.doadd') }}">
+            <?php 
+              $lang = @\Session::get('language');
+            ?>
+            <form id="EditTestimonial" method="post" action="{{ route('admin.testimonials.update', ['lang' => $lang, 'id' => $testimonial->id]) }}" enctype="multipart/form-data">
               {{ csrf_field() }}
               <input type="hidden" id="lang_code" name="locale" value="en">
               <div class="row">
                 <div class="col-md-10">
                   <div class="form-group">
-                    <label class="bmd-label-floating">State Name</label>
-                    <input type="text" id="states_name" name="states_name" class="form-control">
+                    <label class="bmd-label-floating">Testimonial Name</label>
+                    <input type="text" id="testimonials_name" name="testimonials_name" class="form-control" value="{{ $testimonial->testimonials_name }}">
                   </div>
                   <div class="form-group">
-                    <label class="bmd-label-floating">Country</label>
-                    <select id="countries_id" class="form-control" name="countries_id">
-                      <option>---Please Select---</option>
-                      <?php @countryOption(); ?>
-                    </select>
+                    <label class="bmd-label-floating">Testimonial Content</label>
+                    <textarea id='edit' class="form-control" name="testimonials_content">{{ $testimonial->testimonials_content }}
+                    </textarea>
+                  </div>
+                  <div class="form-group">
+                    <label class="bmd-label-floating">Testimonial Image</label>
+                    <div class="file-field">
+                      <div class="z-depth-1-half mb-4">
+                        @if($testimonial->testimonials_image)
+                        <img src="{{ Storage::disk('local')->url($testimonial->testimonials_image) }}" class="img-fluid" alt="example placeholder" width="300px" height="200px">
+                        @endif
+                      </div>
+                      <div class="d-flex">
+                        <div class="btn btn-primary btn-round btn-file">
+                          <span>Choose file</span>
+                          <input type="file" name="testimonials_image" id="testimonials_image">
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 </div>
                 <div class="col-md-2">
                   <div class="form-group float-right">
                     <label class="bmd-label-floating">State Status</label>
                     <select id="status" name="status" class="form-control">
-                      <option value="1">Published</option>
-                      <option value="2">Draft</option>
+                      <option value="1" @if($testimonial->status == 1) selected @endif>Published</option>
+                      <option value="2" @if($testimonial->status == 2) selected @endif>Draft</option>
                     </select>
                   </div>
                 </div>

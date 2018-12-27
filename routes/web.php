@@ -80,5 +80,12 @@ Route::prefix('admin')->group(function()
 	Route::post('/states/update/{lang}/{id}', 'Admin\StatesController@update')->name('admin.states.update');
 	Route::delete('/states/del/{lang}/{id}', 'Admin\StatesController@doDelete')->name('admin.states.del');
 
+	Route::get('/testimonials', 'Admin\TestimonialsController@index')->name('admin.testimonials');
+	Route::get('/testimonials/add', 'Admin\TestimonialsController@create')->name('admin.testimonials.add');
+	Route::post('/testimonials/doadd', 'Admin\TestimonialsController@doadd')->name('admin.testimonials.doadd');
+	Route::get('/testimonials/edit/{lang}/{id}', 'Admin\TestimonialsController@edit')->name('admin.testimonials.edit');
+	Route::post('/testimonials/update/{lang}/{id}', 'Admin\TestimonialsController@update')->name('admin.testimonials.update');
+	Route::delete('/testimonials/del/{lang}/{id}', 'Admin\TestimonialsController@doDelete')->name('admin.testimonials.del');
+
 });
 

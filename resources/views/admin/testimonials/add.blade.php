@@ -23,7 +23,7 @@
       <div class="col-md-12">
         <div class="card">
           <div class="card-header card-header-warning">
-            <h3 class="card-title">Add New State
+            <h3 class="card-title">Add New Testimonial
             <div class="float-right">
               <select id="sitelang" name="sitelang" class="browser-default btn-round custom-select">
                 <?php @langOption(); ?>
@@ -35,22 +35,28 @@
           </div>
           <div class="card-body">
             @include('admin.layouts.messages')
-            <form id="AddNewState" method="post" action="{{ route('admin.states.doadd') }}">
+            <form id="AddNewTestimonial" method="post" action="{{ route('admin.testimonials.doadd') }}" enctype="multipart/form-data">
               {{ csrf_field() }}
               <input type="hidden" id="lang_code" name="locale" value="en">
               <div class="row">
                 <div class="col-md-10">
                   <div class="form-group">
-                    <label class="bmd-label-floating">State Name</label>
-                    <input type="text" id="states_name" name="states_name" class="form-control">
+                    <label class="bmd-label-floating">Testimonial Name</label>
+                    <input type="text" id="testimonials_name" name="testimonials_name" class="form-control">
                   </div>
                   <div class="form-group">
-                    <label class="bmd-label-floating">Country</label>
-                    <select id="countries_id" class="form-control" name="countries_id">
-                      <option>---Please Select---</option>
-                      <?php @countryOption(); ?>
-                    </select>
+                    <label class="bmd-label-floating">Testimonial Content</label>
+                    <textarea id='edit' class="form-control" name="testimonials_content">
+                    </textarea>
                   </div>
+                  <div class="form-group">
+                    <label class="bmd-label-floating">Testimonial Image</label>
+                    <span class="btn btn-primary btn-round btn-file">
+                      <span class="fileinput-new">Choose file</span>
+                      <input type="file" name="testimonials_image" id="testimonials_image" />
+                    </span>
+                  </div>
+                  
                 </div>
                 <div class="col-md-2">
                   <div class="form-group float-right">

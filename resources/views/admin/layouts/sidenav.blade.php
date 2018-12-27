@@ -51,6 +51,12 @@
                     <p>State management</p>
                 </a>
             </li>
+             <li class="nav-item {{ Request::is('admin/testimonials*') ? 'active' : '' }}  ">
+                <a class="nav-link" href="{{ route('admin.testimonials') }}">
+                    <i class="material-icons">thumb_up</i>
+                    <p>Testimonials management</p>
+                </a>
+            </li>
 
                   <!--  <li class="nav-item ">
                        <a class="nav-link" href="../examples/user.html">
