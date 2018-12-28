@@ -91,7 +91,8 @@ Route::prefix('admin')->group(function()
 	Route::get('/accommodations/add', 'Admin\AccommodationsController@create')->name('admin.accommodations.add');
 	Route::post('/accommodations/doadd', 'Admin\AccommodationsController@doadd')->name('admin.accommodations.doadd');
 	Route::get('/accommodations/edit/{lang}/{id}', 'Admin\AccommodationsController@edit')->name('admin.accommodations.edit');
-
+	Route::post('/accommodations/update/{lang}/{id}', 'Admin\AccommodationsController@update')->name('admin.accommodations.update');
+	Route::delete('/accommodations/del/{lang}/{id}', 'Admin\AccommodationsController@doDelete')->name('admin.accommodations.del');
 
 });
 

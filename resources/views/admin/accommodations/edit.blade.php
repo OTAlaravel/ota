@@ -23,49 +23,44 @@
       <div class="col-md-12">
         <div class="card">
           <div class="card-header card-header-warning">
-            <h3 class="card-title">Add New Testimonial
+            <h3 class="card-title">Edit Accommodation
             <div class="float-right">
               <select id="sitelang" name="sitelang" class="browser-default btn-round custom-select">
                 <?php @langOption(); ?>
               </select>
-              <a href="{{ route('admin.testimonials')}}" class="btn-sm btn-success btn-round ">
+              <a href="{{ route('admin.accommodations')}}" class="btn-sm btn-success btn-round ">
               <i class="material-icons">library_books</i> List</a>
             </div>
             </h3>
           </div>
           <div class="card-body">
             @include('admin.layouts.messages')
-            <form id="AddNewTestimonial" method="post" action="{{ route('admin.testimonials.doadd') }}" enctype="multipart/form-data">
+            <?php 
+              $lang = @\Session::get('language');
+            ?>
+            <form id="EditAccommodation" method="post" action="{{ route('admin.accommodations.update', ['lang' => $lang, 'id' => $accommodation->id]) }}">
               {{ csrf_field() }}
               <input type="hidden" id="lang_code" name="locale" value="en">
               <div class="row">
                 <div class="col-md-10">
                   <div class="form-group">
-                    <label class="bmd-label-floating">Testimonial Name</label>
-                    <input type="text" id="testimonials_name" name="testimonials_name" class="form-control">
+                    <label class="bmd-label-floating">Accommodation Name</label>
+                    <input type="text" id="accommodations_name" name="accommodations_name" class="form-control" value="{{ $accommodation->accommodations_name }}">
                   </div>
                   <div class="form-group">
-                    <label class="bmd-label-floating">Testimonial Content</label>
-                    <textarea id='edit' class="form-control" name="testimonials_content">
-                    </textarea>
+                   <div>Accommodation slug: &nbsp;<i><span id="accommodations_slug_lebel">{{ $accommodation->accommodations_slug }}</span></i></div> 
+                   <input type="hidden" id="accommodations_slug" name="accommodations_slug" value="{{ $accommodation->accommodations_slug }}">
                   </div>
                   <div class="form-group">
-                    <label class="bmd-label-floating">Testimonial Image</label>
-                    <span class="btn btn-primary btn-round btn-file">
-                      <span class="fileinput-new">Choose file</span>
-                      <input type="file" name="testimonials_image" id="testimonials_image" />
-                    </span>
-                  </div>
-                  
-                </div>
-                <div class="col-md-2">
-                  <div class="form-group float-right">
-                    <label class="bmd-label-floating">Status</label>
+                    <label class="bmd-label-floating">Accommodation Status</label>
                     <select id="status" name="status" class="form-control">
-                      <option value="1">Published</option>
-                      <option value="2">Draft</option>
+                      <option value="1" @if($accommodation->status == 1) selected @endif>Published</option>
+                      <option value="2" @if($accommodation->status == 2) selected @endif>Draft</option>
                     </select>
                   </div>
+                </div>
+                <div class="col-md-2">
+                  <!-- right section -->
                 </div>
               </div>
               <div class="row">
@@ -117,6 +112,12 @@ $('#edit').froalaEditor({
 enter: $.FroalaEditor.ENTER_P,
 initOnClick: false
 })
+});
+$("#accommodations_name").keyup(function(event) {
+  var stt = $(this).val();
+  str = stt.replace(/\s+/g, '-').toLowerCase();
+  $("#accommodations_slug").val(str);
+  $("#accommodations_slug_lebel").text(str);         
 });
 </script>
 <script src="{{ asset('backend/assets/js/posts.js') }}"></script>

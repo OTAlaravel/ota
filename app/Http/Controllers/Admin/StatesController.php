@@ -7,33 +7,23 @@ use App\Http\Controllers\Controller;
 
 class StatesController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
+    public function __construct()
+    {
+        $this->middleware('auth:admin');
+    }
+
     public function index()
     {
         $states = States::all();
         return view('admin.states.index', compact('states'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
         return view('admin.states.add');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function doadd(Request $request)
     {
         $this->validate($request, [
@@ -45,12 +35,6 @@ class StatesController extends Controller
         return redirect()->back()->with('message', 'State added successfully!');
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function edit($lang, $id)
     {   
         $state =  States::where('id', '=' , $id)->get()->first();
@@ -58,13 +42,6 @@ class StatesController extends Controller
         return view('admin.states.edit', compact('state'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, $lang, $id)
     {
         $this->validate($request, [
@@ -80,12 +57,6 @@ class StatesController extends Controller
         return redirect()->back()->with('message', 'State updated successfully!');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function doDelete($lang, $id)
     {
         $state = States::where('id', '=' , $id)->get()->first();

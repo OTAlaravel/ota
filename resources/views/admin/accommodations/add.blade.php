@@ -28,7 +28,7 @@
               <select id="sitelang" name="sitelang" class="browser-default btn-round custom-select">
                 <?php @langOption(); ?>
               </select>
-              <a href="{{ route('admin.states')}}" class="btn-sm btn-success btn-round ">
+              <a href="{{ route('admin.accommodations')}}" class="btn-sm btn-success btn-round ">
               <i class="material-icons">library_books</i> List</a>
             </div>
             </h3>

@@ -71,7 +71,7 @@
                 </div>
                 <div class="col-md-2">
                   <div class="form-group float-right">
-                    <label class="bmd-label-floating">State Status</label>
+                    <label class="bmd-label-floating">Status</label>
                     <select id="status" name="status" class="form-control">
                       <option value="1" @if($testimonial->status == 1) selected @endif>Published</option>
                       <option value="2" @if($testimonial->status == 2) selected @endif>Draft</option>

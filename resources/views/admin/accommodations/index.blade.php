@@ -48,7 +48,7 @@
                                      <i class="fa fa-toggle-off" aria-hidden="true"></i>
                                  </a>
                                  @endif
-                                 <form id="delete-form-{{ $accommodation->id }}" method="post" action="{{ route('admin.testimonials.del', ['lang' => $accommodation->locale, 'id' => $accommodation->id]) }}" style="display: none;">
+                                 <form id="delete-form-{{ $accommodation->id }}" method="post" action="{{ route('admin.accommodations.del', ['lang' => $accommodation->locale, 'id' => $accommodation->id]) }}" style="display: none;">
                                     {{ csrf_field() }}
                                     {{ method_field('DELETE') }}
                                 </form>

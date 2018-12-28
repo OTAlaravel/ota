@@ -7,33 +7,24 @@ use App\Http\Controllers\Controller;
 
 class AccommodationsController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
+    public function __construct()
+    {
+        $this->middleware('auth:admin');
+    }
+    
     public function index()
     {
         $accommodations =  Accommodations::all();
         return view('admin.accommodations.index', compact('accommodations'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
         return view('admin.accommodations.add');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+   
     public function doadd(Request $request)
     {
         $this->validate($request, [
@@ -44,37 +35,32 @@ class AccommodationsController extends Controller
         return redirect()->back()->with('message', 'Accommodation added successfully!');
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        
+    public function edit($lang, $id)
+    {   
+        $accommodation =  Accommodations::where('id', '=' , $id)->get()->first();
+        $accommodation->translate($lang);
+        return view('admin.accommodations.edit', compact('accommodation'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
+    public function update(Request $request, $lang, $id)
     {
-        //
+        $this->validate($request, [
+            'accommodations_name' => 'required|string|max:255',
+        ]);
+        $accommodation = Accommodations::where('id', '=' , $id)->get()->first();
+        $accommodation->locale = $lang;
+        $accommodation->accommodations_name = $request->accommodations_name;
+        $accommodation->accommodations_slug = $request->accommodations_slug;
+        $accommodation->status = $request->status;
+        $accommodation->save();
+        return redirect()->back()->with('message', 'Accommodation updated successfully!');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
+    public function doDelete($lang, $id)
     {
-        //
+        $accommodation = Accommodations::where('id', '=' , $id)->get()->first();
+        $accommodation->translate($lang);
+        Accommodations::where('id', $id)->delete();
+        return redirect()->back()->with('message', 'Accommodation deleted successfully!');
     }
 }
