@@ -63,6 +63,12 @@
                    <p>Accommodations</p>
                </a>
            </li>
+           <li class="nav-item {{ Request::is('admin/species*') ? 'active' : '' }}  ">
+               <a class="nav-link" href="{{ route('admin.species') }}">
+                   <i class="material-icons">work</i>
+                   <p>Species</p>
+               </a>
+           </li>
 
                    <!-- <li class="nav-item ">
                         <a class="nav-link" href="../examples/table.html">

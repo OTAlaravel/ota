@@ -94,5 +94,11 @@ Route::prefix('admin')->group(function()
 	Route::post('/accommodations/update/{lang}/{id}', 'Admin\AccommodationsController@update')->name('admin.accommodations.update');
 	Route::delete('/accommodations/del/{lang}/{id}', 'Admin\AccommodationsController@doDelete')->name('admin.accommodations.del');
 
+	Route::get('/species', 'Admin\SpeciesController@index')->name('admin.species');
+	Route::get('/species/add', 'Admin\SpeciesController@create')->name('admin.species.add');
+	Route::post('/species/doadd', 'Admin\SpeciesController@doadd')->name('admin.species.doadd');
+	Route::get('/species/edit/{lang}/{id}', 'Admin\SpeciesController@edit')->name('admin.species.edit');
+	Route::post('/species/update/{lang}/{id}', 'Admin\SpeciesController@update')->name('admin.species.update');
+	Route::delete('/species/del/{lang}/{id}', 'Admin\SpeciesController@doDelete')->name('admin.species.del');
 });
 
