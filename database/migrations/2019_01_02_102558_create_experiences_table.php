@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateSpeciesTable extends Migration
+class CreateExperiencesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,19 +13,19 @@ class CreateSpeciesTable extends Migration
      */
     public function up()
     {
-        Schema::create('species', function (Blueprint $table) {
+        Schema::create('experiences', function (Blueprint $table) {
             $table->increments('id');
             $table->boolean('status')->default(1);
             $table->timestamps();
         });
 
-        Schema::create('species_translations', function (Blueprint $table) {
+        Schema::create('experiences_translations', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('species_id')->unsigned();
+            $table->integer('experiences_id')->unsigned();
             $table->string('locale')->index();
-            $table->string('species_name');
-            $table->unique(['species_id','locale']);
-            $table->foreign('species_id')->references('id')->on('species')->onDelete('cascade');
+            $table->string('experiences_name');
+            $table->unique(['experiences_id','locale']);
+            $table->foreign('experiences_id')->references('id')->on('experiences')->onDelete('cascade');
         });
     }
 
@@ -36,7 +36,7 @@ class CreateSpeciesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('species');
-        Schema::dropIfExists('species_translations');
+        Schema::dropIfExists('experience');
+        Schema::dropIfExists('experiences_translations');
     }
 }

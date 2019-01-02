@@ -100,5 +100,20 @@ Route::prefix('admin')->group(function()
 	Route::get('/species/edit/{lang}/{id}', 'Admin\SpeciesController@edit')->name('admin.species.edit');
 	Route::post('/species/update/{lang}/{id}', 'Admin\SpeciesController@update')->name('admin.species.update');
 	Route::delete('/species/del/{lang}/{id}', 'Admin\SpeciesController@doDelete')->name('admin.species.del');
+
+	Route::get('/inspirations', 'Admin\InspirationsController@index')->name('admin.inspirations');
+	Route::get('/inspirations/add', 'Admin\InspirationsController@create')->name('admin.inspirations.add');
+	Route::post('/inspirations/doadd', 'Admin\InspirationsController@doadd')->name('admin.inspirations.doadd');
+	Route::get('/inspirations/edit/{lang}/{id}', 'Admin\InspirationsController@edit')->name('admin.inspirations.edit');
+	Route::post('/inspirations/update/{lang}/{id}', 'Admin\InspirationsController@update')->name('admin.inspirations.update');
+	Route::delete('/inspirations/del/{lang}/{id}', 'Admin\InspirationsController@doDelete')->name('admin.inspirations.del');
+
+	Route::get('/experiences', 'Admin\ExperiencesController@index')->name('admin.experiences');
+	Route::get('/experiences/add', 'Admin\ExperiencesController@create')->name('admin.experiences.add');
+	Route::post('/experiences/doadd', 'Admin\ExperiencesController@doadd')->name('admin.experiences.doadd');
+	Route::get('/experiences/edit/{lang}/{id}', 'Admin\ExperiencesController@edit')->name('admin.experiences.edit');
+	Route::post('/experiences/update/{lang}/{id}', 'Admin\ExperiencesController@update')->name('admin.experiences.update');
+	Route::delete('/experiences/del/{lang}/{id}', 'Admin\ExperiencesController@doDelete')->name('admin.experiences.del');
+
 });
 

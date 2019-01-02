@@ -69,6 +69,18 @@
                    <p>Species</p>
                </a>
            </li>
+           <li class="nav-item {{ Request::is('admin/inspirations*') ? 'active' : '' }}  ">
+               <a class="nav-link" href="{{ route('admin.inspirations') }}">
+                   <i class="material-icons">work</i>
+                   <p>Inspirations</p>
+               </a>
+           </li>
+            <li class="nav-item {{ Request::is('admin/experiences*') ? 'active' : '' }}  ">
+               <a class="nav-link" href="{{ route('admin.experiences') }}">
+                   <i class="material-icons">work</i>
+                   <p>Experiences</p>
+               </a>
+           </li>
 
                    <!-- <li class="nav-item ">
                         <a class="nav-link" href="../examples/table.html">

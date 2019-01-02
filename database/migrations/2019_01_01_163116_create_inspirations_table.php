@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateSpeciesTable extends Migration
+class CreateInspirationsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,19 +13,19 @@ class CreateSpeciesTable extends Migration
      */
     public function up()
     {
-        Schema::create('species', function (Blueprint $table) {
+        Schema::create('inspirations', function (Blueprint $table) {
             $table->increments('id');
             $table->boolean('status')->default(1);
             $table->timestamps();
         });
 
-        Schema::create('species_translations', function (Blueprint $table) {
+        Schema::create('inspirations_translations', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('species_id')->unsigned();
+            $table->integer('inspirations_id')->unsigned();
             $table->string('locale')->index();
-            $table->string('species_name');
-            $table->unique(['species_id','locale']);
-            $table->foreign('species_id')->references('id')->on('species')->onDelete('cascade');
+            $table->string('inspirations_name');
+            $table->unique(['inspirations_id','locale']);
+            $table->foreign('inspirations_id')->references('id')->on('inspirations')->onDelete('cascade');
         });
     }
 
@@ -36,7 +36,7 @@ class CreateSpeciesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('species');
-        Schema::dropIfExists('species_translations');
+        Schema::dropIfExists('inspirations');
+        Schema::dropIfExists('inspirations_translations');
     }
 }
