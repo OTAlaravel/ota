@@ -7,7 +7,11 @@ use App\Http\Controllers\Controller;
 
 class ExperiencesController extends Controller
 {
-
+    public function __construct()
+    {
+        $this->middleware('auth:admin');
+    }
+    
     public function index()
     {
         $experiences = Experiences::all();

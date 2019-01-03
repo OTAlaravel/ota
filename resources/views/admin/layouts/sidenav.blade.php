@@ -39,80 +39,62 @@
                     <p>Banner management</p>
                 </a>
             </li>
-             <li class="nav-item {{ Request::is('admin/countries*') ? 'active' : '' }}  ">
+            <li class="nav-item {{ Request::is('admin/countries*') ? 'active' : '' }}  ">
                 <a class="nav-link" href="{{ route('admin.countries') }}">
                     <i class="material-icons">list</i>
                     <p>Country management</p>
                 </a>
             </li>
-           <li class="nav-item {{ Request::is('admin/states*') ? 'active' : '' }}  ">
+            <li class="nav-item {{ Request::is('admin/states*') ? 'active' : '' }}  ">
                 <a class="nav-link" href="{{ route('admin.states') }}">
                     <i class="material-icons">list</i>
                     <p>State management</p>
                 </a>
             </li>
-             <li class="nav-item {{ Request::is('admin/testimonials*') ? 'active' : '' }}  ">
+            <li class="nav-item {{ Request::is('admin/testimonials*') ? 'active' : '' }}  ">
                 <a class="nav-link" href="{{ route('admin.testimonials') }}">
                     <i class="material-icons">speaker_notes</i>
                     <p>Testimonials management</p>
                 </a>
             </li>
-          <li class="nav-item {{ Request::is('admin/accommodations*') ? 'active' : '' }}  ">
-               <a class="nav-link" href="{{ route('admin.accommodations') }}">
-                   <i class="material-icons">work</i>
-                   <p>Accommodations</p>
-               </a>
-           </li>
-           <li class="nav-item {{ Request::is('admin/species*') ? 'active' : '' }}  ">
-               <a class="nav-link" href="{{ route('admin.species') }}">
-                   <i class="material-icons">work</i>
-                   <p>Species</p>
-               </a>
-           </li>
-           <li class="nav-item {{ Request::is('admin/inspirations*') ? 'active' : '' }}  ">
-               <a class="nav-link" href="{{ route('admin.inspirations') }}">
-                   <i class="material-icons">work</i>
-                   <p>Inspirations</p>
-               </a>
-           </li>
-            <li class="nav-item {{ Request::is('admin/experiences*') ? 'active' : '' }}  ">
-               <a class="nav-link" href="{{ route('admin.experiences') }}">
-                   <i class="material-icons">work</i>
-                   <p>Experiences</p>
-               </a>
-           </li>
+            <li class="nav-item {{ Request::is('admin/accommodations*') ? 'active' : '' }}  ">
+             <a class="nav-link" href="{{ route('admin.accommodations') }}">
+                 <i class="material-icons">work</i>
+                 <p>Accommodations</p>
+             </a>
+         </li>
+         <li class="nav-item {{ Request::is('admin/species*') ? 'active' : '' }}  ">
+             <a class="nav-link" href="{{ route('admin.species') }}">
+                 <i class="material-icons">work</i>
+                 <p>Species</p>
+             </a>
+         </li>
+         <li class="nav-item {{ Request::is('admin/inspirations*') ? 'active' : '' }}  ">
+             <a class="nav-link" href="{{ route('admin.inspirations') }}">
+                 <i class="material-icons">work</i>
+                 <p>Inspirations</p>
+             </a>
+         </li>
+         <li class="nav-item {{ Request::is('admin/experiences*') ? 'active' : '' }}  ">
+             <a class="nav-link" href="{{ route('admin.experiences') }}">
+                 <i class="material-icons">work</i>
+                 <p>Experiences</p>
+             </a>
+         </li>
+         <li class="nav-item {{ Request::is('admin/hotels*') ? 'active' : '' }}  ">
+             <a class="nav-link" href="{{ route('admin.hotels') }}">
+                 <i class="material-icons">store</i>
+                 <p>Hotels</p>
+             </a>
+         </li>
+         <li class="nav-item {{ Request::is('admin/regions*') ? 'active' : '' }}  ">
+             <a class="nav-link" href="{{ route('admin.regions') }}">
+                 <i class="material-icons">store</i>
+                 <p>Regions</p>
+             </a>
+         </li>
 
-                   <!-- <li class="nav-item ">
-                        <a class="nav-link" href="../examples/table.html">
-                            <i class="material-icons">content_paste</i>
-                            <p>Table List</p>
-                        </a>
-                    </li>
-                    <li class="nav-item ">
-                        <a class="nav-link" href="../examples/typography.html">
-                            <i class="material-icons">library_books</i>
-                            <p>Typography</p>
-                        </a>
-                    </li>
-                    <li class="nav-item ">
-                        <a class="nav-link" href="../examples/icons.html">
-                            <i class="material-icons">bubble_chart</i>
-                            <p>Icons</p>
-                        </a>
-                    </li>
-                    <li class="nav-item ">
-                        <a class="nav-link" href="../examples/maps.html">
-                            <i class="material-icons">location_ons</i>
-                            <p>Maps</p>
-                        </a>
-                    </li>
-                    <li class="nav-item ">
-                        <a class="nav-link" href="../examples/notifications.html">
-                            <i class="material-icons">notifications</i>
-                            <p>Notifications</p>
-                        </a>
-                    </li>  -->
-
-                </ul>
-            </div>
-        </div>
+         
+     </ul>
+ </div>
+</div>

@@ -115,5 +115,17 @@ Route::prefix('admin')->group(function()
 	Route::post('/experiences/update/{lang}/{id}', 'Admin\ExperiencesController@update')->name('admin.experiences.update');
 	Route::delete('/experiences/del/{lang}/{id}', 'Admin\ExperiencesController@doDelete')->name('admin.experiences.del');
 
+	Route::get('/hotels', 'Admin\HotelsController@index')->name('admin.hotels');
+	Route::post('/hotels/uploadcsv', 'Admin\HotelsController@uploadcsv')->name('admin.hotels.uploadcsv');
+
+	Route::get('/regions', 'Admin\RegionsController@index')->name('admin.regions');
+	Route::get('/regions/add', 'Admin\RegionsController@create')->name('admin.regions.add');
+	Route::post('/regions/doadd', 'Admin\RegionsController@doadd')->name('admin.regions.doadd');
+	Route::get('/regions/edit/{lang}/{id}', 'Admin\RegionsController@edit')->name('admin.regions.edit');
+	Route::post('/regions/update/{lang}/{id}', 'Admin\RegionsController@update')->name('admin.regions.update');
+	Route::delete('/regions/del/{lang}/{id}', 'Admin\RegionsController@doDelete')->name('admin.regions.del');
+
+
+
 });
 

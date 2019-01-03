@@ -7,6 +7,10 @@ use App\Http\Controllers\Controller;
 
 class SpeciesController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth:admin');
+    }
     
     public function index()
     {   

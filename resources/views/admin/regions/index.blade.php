@@ -10,45 +10,45 @@
     <div class="container-fluid">
         <div class="card">
             <div class="card-header card-header-warning">
-                <h3 class="card-title ">State Management
+                <h3 class="card-title ">Regions
                     <div class="float-right">
                         <select id="sitelang" name="sitelang" class="browser-default btn-round custom-select">
                             <?php @langOption(); ?>
                         </select>
-                        <a href="{{ route('admin.states.add') }}" class="btn-sm btn-success btn-round "> 
+                        <a href="{{ route('admin.regions.add') }}" class="btn-sm btn-success btn-round "> 
                             <i class="material-icons">create</i> New</a>
-                        </div>
+                    </div>
                     </div>
                     <div class="card-body table-responsive">
                        @include('admin.layouts.messages')
-                       <table class="table" id="order-listing">
+                        <table class="table" id="order-listing">
                         <thead class=" text-primary"> 
                             <th>Name</th>
-                            <th>Country ID</th>
+                            <th>Created at</th>
                             <th>Action</th>
                         </thead>
                         <tbody>
                             <?php $lang = @\Session::get('language');
                             ?>
-                            @foreach($states as $state)
-                            @if($state->locale == $lang)
+                            @foreach($regions as $region)
+                            @if($region->locale == $lang)
                             <tr>
-                                <td>{{ $state->states_name }}</td>
-                                <td>{{ $state->countries_id }}</td>
+                                <td>{{ $region->regions_name }}</td>
+                                <td>{{ $region->created_at }}</td>
                                 <td class="text-primary">
-                                    <a href="{{ route('admin.states.edit', ['lang' => $state->locale, 'id' => $state->id]) }}" title="Edit">
+                                    <a href="{{ route('admin.regions.edit', ['lang' => $region->locale, 'id' => $region->id]) }}" title="Edit">
                                      <i class="fa fa-edit"></i>
                                     </a>
-                                 @if($state->status==1)
-                                 <a href="{{ route('admin.states.edit', ['lang' => $state->locale, 'id' => $state->id]) }}" style="color:#4caf50" title="Published">
+                                 @if($region->status==1)
+                                 <a href="{{ route('admin.regions.edit', ['lang' => $region->locale, 'id' => $region->id]) }}" style="color:#4caf50" title="Published">
                                      <i  class="fa fa-toggle-on" aria-hidden="true"></i>
                                  </a>
                                  @else
-                                 <a href="{{ route('admin.states.edit', ['lang' => $state->locale, 'id' => $state->id]) }}" style="color:red" title="Draft">
+                                 <a href="{{ route('admin.regions.edit', ['lang' => $region->locale, 'id' => $region->id]) }}" style="color:red" title="Draft">
                                      <i class="fa fa-toggle-off" aria-hidden="true"></i>
                                  </a>
                                  @endif
-                                 <form id="delete-form-{{ $state->id }}" method="post" action="{{ route('admin.states.del', ['lang' => $state->locale, 'id' => $state->id]) }}" style="display: none;">
+                                 <form id="delete-form-{{ $region->id }}" method="post" action="{{ route('admin.regions.del', ['lang' => $region->locale, 'id' => $region->id]) }}" style="display: none;">
                                     {{ csrf_field() }}
                                     {{ method_field('DELETE') }}
                                 </form>
@@ -58,7 +58,7 @@
                                     icon: 'warning',
                                     buttons: true,
                                     dangerMode: true,
-                                }).then((willDelete) => {if(willDelete){event.preventDefault();document.getElementById('delete-form-{{ $state->id }}').submit();}else{}});" title="Delete">
+                                }).then((willDelete) => {if(willDelete){event.preventDefault();document.getElementById('delete-form-{{ $region->id }}').submit();}else{}});" title="Delete">
                                 <i class="fa fa-trash" aria-hidden="true"></i>
                             </a>
                         </td>
