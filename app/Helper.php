@@ -79,4 +79,12 @@
 		}
 		return $dataID;
 	}
+
+	function getAccomodationID($string){
+		$data = App\AccommodationsTranslation::where('accommodations_name', '=' , $string)->get()->first();
+		if(!empty($data)){
+			$dataID = $data->accommodations_id;
+			return $dataID;
+		}
+	}
 ?>

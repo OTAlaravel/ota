@@ -28,9 +28,52 @@
                            <table class="table" id="order-listing">
                             <thead class=" text-primary"> 
                                 <th>Name</th>
+                                <th>Town</th>
+                                <th>Email</th>
                                 <th>Created at</th>
                                 <th>Action</th>
                             </thead>
+                        <tbody>
+                            <?php $lang = @\Session::get('language');
+                            ?>
+                            @foreach($hotels as $hotel)
+                            @if($hotel->locale == $lang)
+                            <tr>
+                                <td>{{ $hotel->hotels_name }}</td>
+                                <td>{{ $hotel->town }}</td>
+                                <td>{{ $hotel->email_id }}</td>
+                                <td>{{ $hotel->created_at }}</td>
+                                <td class="text-primary">
+                                    <a href="{{ route('admin.inspirations.edit', ['lang' => $hotel->locale, 'id' => $hotel->id]) }}" title="Edit">
+                                     <i class="fa fa-edit"></i>
+                                    </a>
+                                 @if($hotel->status==1)
+                                 <a href="{{ route('admin.inspirations.edit', ['lang' => $hotel->locale, 'id' => $hotel->id]) }}" style="color:#4caf50" title="Published">
+                                     <i  class="fa fa-toggle-on" aria-hidden="true"></i>
+                                 </a>
+                                 @else
+                                 <a href="{{ route('admin.inspirations.edit', ['lang' => $hotel->locale, 'id' => $hotel->id]) }}" style="color:red" title="Draft">
+                                     <i class="fa fa-toggle-off" aria-hidden="true"></i>
+                                 </a>
+                                 @endif
+                                 <form id="delete-form-{{ $hotel->id }}" method="post" action="{{ route('admin.inspirations.del', ['lang' => $hotel->locale, 'id' => $hotel->id]) }}" style="display: none;">
+                                    {{ csrf_field() }}
+                                    {{ method_field('DELETE') }}
+                                </form>
+                                <a href="javascript:void(0);" onclick="swal({
+                                    title: 'Are you sure?',
+                                    text: 'Once deleted, you will not be able to recover this!',
+                                    icon: 'warning',
+                                    buttons: true,
+                                    dangerMode: true,
+                                }).then((willDelete) => {if(willDelete){event.preventDefault();document.getElementById('delete-form-{{ $hotel->id }}').submit();}else{}});" title="Delete">
+                                <i class="fa fa-trash" aria-hidden="true"></i>
+                            </a>
+                        </td>
+                    </tr>
+                    @endif
+                    @endforeach
+                </tbody>
 
                         </table>
                     </div>

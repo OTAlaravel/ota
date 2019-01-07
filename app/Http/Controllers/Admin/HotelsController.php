@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\admin;
 use App\Hotels;
+use App\HotelSpeciesRelation;
+use App\HotelAccommodationRelation;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -14,8 +16,9 @@ class HotelsController extends Controller
     }
 
     public function index()
-    {
-        return view('admin.hotels.index');
+    {  
+        $hotels = Hotels::all();
+        return view('admin.hotels.index', compact('hotels'));
     }
 
     public function uploadcsv(Request $request){
@@ -54,16 +57,12 @@ class HotelsController extends Controller
                         $enthusiast_services = $getData[16];
                         $activity_season = $getData[17];
                         $species = explode(",", $getData[18]);
-                        $species_arr = array();
-                        for ($i=0; $i < count($species) ; $i++) { 
-                             $speciesID = getSpeciesID($species[$i]);
-                             array_push($species_arr, $speciesID);
-
-                        }
                         $hotel = new Hotels;
-                        //Insert
-                        $hotel->hotel_name = $hotel_name;
-                        $hotel->hotel_desc = $hotel_desc;
+                        //=======Insert hotel=====
+                        $lang =  \App::getLocale(); 
+                        $hotel->locale = $lang;
+                        $hotel->hotels_name = $hotel_name;
+                        $hotel->hotels_desc = $hotel_desc;
                         $hotel->region_id = $region_id;
                         $hotel->country_id = $country_id;
                         $hotel->state_id = $state_id;
@@ -80,18 +79,73 @@ class HotelsController extends Controller
                         $hotel->contact_status = $contact_status;
                         $hotel->rating = $rating;
                         $hotel->save();
-                       /* for ($i=0; $i < count($species_arr) ; $i++) { 
-                            
-                        }*/
-                        echo $hotel->id;
+                        $hotel_id = $hotel->id;
+                        
+                        //=====species data insert=====
+                        for ($i=0; $i < count($species) ; $i++) { 
+                            $hotelSpeciesRelation = new HotelSpeciesRelation;
+                            $speciesID = getSpeciesID($species[$i]);
+                            $hotelSpeciesRelation->hotel_id = $hotel_id;
+                            $hotelSpeciesRelation->species_id = $speciesID;
+                            $hotelSpeciesRelation->save();
+                        }
+                        //=====accommodation data insert=====
+                        $acc_type_arr = array('TYPE A', 'TYPE B', 'TYPE C', 'TYPE D', 'TYPE E', 'TYPE F');
+                        $type_1 = $getData[19];
+                        $type_2 = $getData[20];
+                        $type_3 = $getData[21];
+                        $type_4 = $getData[22];
+                        $type_5 = $getData[23];
+                        $type_6 = $getData[24];
+                        if($type_1 == 1){
+                            $accommodation_id = getAccomodationID($acc_type_arr[0]);
+                            $hotelaccommodationRelation = new HotelAccommodationRelation;
+                            $hotelaccommodationRelation->hotel_id = $hotel_id;
+                            $hotelaccommodationRelation->accommodation_id = $accommodation_id;
+                            $hotelaccommodationRelation->save();
+                        }
+                        if($type_2 == 1){
+                            $accommodation_id = getAccomodationID($acc_type_arr[1]);
+                            $hotelaccommodationRelation = new HotelAccommodationRelation;
+                            $hotelaccommodationRelation->hotel_id = $hotel_id;
+                            $hotelaccommodationRelation->accommodation_id = $accommodation_id;
+                            $hotelaccommodationRelation->save();
+                        }
+                        if($type_3 == 1){
+                            $accommodation_id = getAccomodationID($acc_type_arr[2]);
+                            $hotelaccommodationRelation = new HotelAccommodationRelation;
+                            $hotelaccommodationRelation->hotel_id = $hotel_id;
+                            $hotelaccommodationRelation->accommodation_id = $accommodation_id;
+                            $hotelaccommodationRelation->save();
+                        }
+                        if($type_4 == 1){
+                            $accommodation_id = getAccomodationID($acc_type_arr[3]);
+                            $hotelaccommodationRelation = new HotelAccommodationRelation;
+                            $hotelaccommodationRelation->hotel_id = $hotel_id;
+                            $hotelaccommodationRelation->accommodation_id = $accommodation_id;
+                            $hotelaccommodationRelation->save();
+                        }
+                        if($type_5 == 1){
+                            $accommodation_id = getAccomodationID($acc_type_arr[4]);
+                            $hotelaccommodationRelation = new HotelAccommodationRelation;
+                            $hotelaccommodationRelation->hotel_id = $hotel_id;
+                            $hotelaccommodationRelation->accommodation_id = $accommodation_id;
+                            $hotelaccommodationRelation->save();
+                        }
+                        if($type_6 == 1){
+                            $accommodation_id = getAccomodationID($acc_type_arr[5]);
+                            $hotelaccommodationRelation = new HotelAccommodationRelation;
+                            $hotelaccommodationRelation->hotel_id = $hotel_id;
+                            $hotelaccommodationRelation->accommodation_id = $accommodation_id;
+                            $hotelaccommodationRelation->save();
+                        }
 
                     }
                 }
                 $row++;
             } while (($getData = fgetcsv($file, 0, ","))!== FALSE);
         }
-        
-        exit();
+        return redirect()->back()->with('message', 'Hotels added successfully!');
 
     }
 
