@@ -4,6 +4,8 @@ namespace App\Http\Controllers\admin;
 use App\Hotels;
 use App\HotelSpeciesRelation;
 use App\HotelAccommodationRelation;
+use App\HotelExperiencesRelation;
+use App\HotelContact;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -82,63 +84,114 @@ class HotelsController extends Controller
                         $hotel_id = $hotel->id;
                         
                         //=====species data insert=====
-                        for ($i=0; $i < count($species) ; $i++) { 
+                        /*for ($i=0; $i < count($species) ; $i++) { 
                             $hotelSpeciesRelation = new HotelSpeciesRelation;
                             $speciesID = getSpeciesID($species[$i]);
                             $hotelSpeciesRelation->hotel_id = $hotel_id;
                             $hotelSpeciesRelation->species_id = $speciesID;
                             $hotelSpeciesRelation->save();
-                        }
+                        }*/
                         //=====accommodation data insert=====
                         $acc_type_arr = array('TYPE A', 'TYPE B', 'TYPE C', 'TYPE D', 'TYPE E', 'TYPE F');
-                        $type_1 = $getData[19];
-                        $type_2 = $getData[20];
-                        $type_3 = $getData[21];
-                        $type_4 = $getData[22];
-                        $type_5 = $getData[23];
-                        $type_6 = $getData[24];
-                        if($type_1 == 1){
-                            $accommodation_id = getAccomodationID($acc_type_arr[0]);
-                            $hotelaccommodationRelation = new HotelAccommodationRelation;
-                            $hotelaccommodationRelation->hotel_id = $hotel_id;
-                            $hotelaccommodationRelation->accommodation_id = $accommodation_id;
-                            $hotelaccommodationRelation->save();
+                        if(!empty($acc_type_arr)){
+                            $type_1 = $getData[19];
+                            $type_2 = $getData[20];
+                            $type_3 = $getData[21];
+                            $type_4 = $getData[22];
+                            $type_5 = $getData[23];
+                            $type_6 = $getData[24];
+                            for ($i=0; $i < count($acc_type_arr) ; $i++) { 
+                                $var_type = ${ 'type_' .($i+1)};
+                                if($var_type == 1){
+                                    accommodationSave($acc_type_arr[$i], $hotel_id);
+                                }
+                            }
                         }
-                        if($type_2 == 1){
-                            $accommodation_id = getAccomodationID($acc_type_arr[1]);
-                            $hotelaccommodationRelation = new HotelAccommodationRelation;
-                            $hotelaccommodationRelation->hotel_id = $hotel_id;
-                            $hotelaccommodationRelation->accommodation_id = $accommodation_id;
-                            $hotelaccommodationRelation->save();
+                        //======Inspiration data insert======
+                        $insp_type_arr  = array();
+                            if(!empty($insp_type_arr)){
+                            $insp_type_1 = $getData[25];
+                            $insp_type_2 = $getData[26];
+                            $insp_type_3 = $getData[27];
+                            $insp_type_4 = $getData[28];
+                            $insp_type_5 = $getData[29];
+                            $insp_type_6 = $getData[30];
+                            $insp_type_7 = $getData[31];
+                            $insp_type_8 = $getData[32];
+                            for ($i=0; $i < count($insp_type_arr) ; $i++) { 
+                                $var_type = ${ 'insp_type_' .($i+1)};
+                                if($var_type == 1){
+                                    inspirationSave($insp_type_arr[$i], $hotel_id);
+                                }
+                            }
                         }
-                        if($type_3 == 1){
-                            $accommodation_id = getAccomodationID($acc_type_arr[2]);
-                            $hotelaccommodationRelation = new HotelAccommodationRelation;
-                            $hotelaccommodationRelation->hotel_id = $hotel_id;
-                            $hotelaccommodationRelation->accommodation_id = $accommodation_id;
-                            $hotelaccommodationRelation->save();
+
+                        //======Experinces data insert======
+                        $exp_type_arr  = array();
+                            if(!empty($exp_type_arr)){
+                            $exp_type_1 = $getData[33];
+                            $exp_type_2 = $getData[34];
+                            $exp_type_3 = $getData[35];
+                            $exp_type_4 = $getData[36];
+                            $exp_type_5 = $getData[37];
+                            $exp_type_6 = $getData[38];
+                            $exp_type_7 = $getData[39];
+                            $exp_type_8 = $getData[40];
+                            for ($i=0; $i < count($exp_type_arr) ; $i++) { 
+                                $var_type = ${ 'exp_type_' .($i+1)};
+                                if($var_type == 1){
+                                    experiencesSave($exp_type_arr[$i], $hotel_id);
+                                }
+                            }
                         }
-                        if($type_4 == 1){
-                            $accommodation_id = getAccomodationID($acc_type_arr[3]);
-                            $hotelaccommodationRelation = new HotelAccommodationRelation;
-                            $hotelaccommodationRelation->hotel_id = $hotel_id;
-                            $hotelaccommodationRelation->accommodation_id = $accommodation_id;
-                            $hotelaccommodationRelation->save();
+                        //Species data insert
+                        $spec_type_arr = array();
+                        if(!empty($spec_type_arr)){
+                            $spec_type_1 = $getData[41];
+                            $spec_type_2 = $getData[42];
+                            $spec_type_3 = $getData[43];
+                            $spec_type_4 = $getData[44];
+                            $spec_type_5 = $getData[45];
+                            $spec_type_6 = $getData[46];
+                            $spec_type_7 = $getData[47];
+                            $spec_type_8 = $getData[48];
+                            $spec_type_9 = $getData[49];
+                            $spec_type_10 = $getData[50];
+                            $spec_type_11 = $getData[51];
+                            $spec_type_12 = $getData[52];
+                            $spec_type_13 = $getData[53];
+                            $spec_type_14 = $getData[54];
+                            $spec_type_15 = $getData[55];
+                            $spec_type_16 = $getData[56];
+                            $spec_type_17 = $getData[57];
+                            $spec_type_18 = $getData[58];
+                            $spec_type_19 = $getData[59];
+                            $spec_type_20 = $getData[60];
+                            $spec_type_21 = $getData[61];
+                            $spec_type_22 = $getData[62];
+                            $spec_type_23 = $getData[63];
+                            $spec_type_24 = $getData[64];
+                            $spec_type_25 = $getData[65];
+                            for ($i=0; $i < count($spec_type_arr) ; $i++) { 
+                                $var_type = ${ 'spec_type_' .($i+1)};
+                                if ($var_type == 1) {
+                                    speciesSave($spec_type_arr[$i], $hotel_id);
+                                }
+                            }
                         }
-                        if($type_5 == 1){
-                            $accommodation_id = getAccomodationID($acc_type_arr[4]);
-                            $hotelaccommodationRelation = new HotelAccommodationRelation;
-                            $hotelaccommodationRelation->hotel_id = $hotel_id;
-                            $hotelaccommodationRelation->accommodation_id = $accommodation_id;
-                            $hotelaccommodationRelation->save();
-                        }
-                        if($type_6 == 1){
-                            $accommodation_id = getAccomodationID($acc_type_arr[5]);
-                            $hotelaccommodationRelation = new HotelAccommodationRelation;
-                            $hotelaccommodationRelation->hotel_id = $hotel_id;
-                            $hotelaccommodationRelation->accommodation_id = $accommodation_id;
-                            $hotelaccommodationRelation->save();
-                        }
+                        //======hotel contact details=====
+                        $website = $getData[69];
+                        $address = $getData[70];
+                        $contact_person_name = $getData[71];
+                        $contact_person_email = $getData[72];
+                        $contact_person_phone = $getData[73];
+                        $HotelContact = new HotelContact;
+                        $HotelContact->website = $website;
+                        $HotelContact->address = $address;
+                        $HotelContact->contact_person_name = $contact_person_name;
+                        $HotelContact->contact_person_email = $contact_person_email;
+                        $HotelContact->contact_person_phone = $contact_person_phone;
+                        $HotelContact->save();
 
                     }
                 }
@@ -176,6 +229,6 @@ class HotelsController extends Controller
 
     public function destroy($id)
     {
-        //
+        
     }
 }

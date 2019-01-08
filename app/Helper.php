@@ -87,4 +87,52 @@
 			return $dataID;
 		}
 	}
+
+	function getInspirationID($string){
+		$data = App\InspirationsTranslation::where('inspirations_name', '=' , $string)->get()->first();
+		if(!empty($data)){
+			$dataID = $data->inspirations_id;
+			return $dataID;
+		}
+	}
+
+	function getExperiencesID($string){
+		$data = App\ExperiencesTranslation::where('experiences_name', '=' , $string)->get()->first();
+		if(!empty($data)){
+			$dataID = $data->experiences_id;
+			return $dataID;
+		}
+	}
+
+	function speciesSave($string, $hotel_id){
+		$speciesID = getSpeciesID($string);
+        $hotelSpeciesRelation = new App\HotelSpeciesRelation;
+        $hotelSpeciesRelation->hotel_id = $hotel_id;
+        $hotelSpeciesRelation->species_id = $speciesID;
+        $hotelSpeciesRelation->save();
+	}
+
+	function accommodationSave($string, $hotel_id){
+		$accommodation_id = getAccomodationID($string);
+        $hotelaccommodationRelation = new App\HotelAccommodationRelation;
+        $hotelaccommodationRelation->hotel_id = $hotel_id;
+        $hotelaccommodationRelation->accommodation_id = $accommodation_id;
+        $hotelaccommodationRelation->save();
+	}
+
+	function inspirationSave($string, $hotel_id){
+		$inspiration_id = getInspirationID($string);
+        $hotelInspirationsRelation = new App\HotelInspirationsRelation;
+        $hotelInspirationsRelation->hotel_id = $hotel_id;
+        $hotelInspirationsRelation->inspirations_id = $inspiration_id;
+        $hotelInspirationsRelation->save();
+	}
+
+	function experiencesSave($string, $hotel_id){
+		$experiences_id = getExperiencesID($string);
+        $HotelexperiencesRelation = new App\HotelExperiencesRelation;
+        $HotelexperiencesRelation->hotel_id = $hotel_id;
+        $HotelexperiencesRelation->experiences_id = $experiences_id;
+        $HotelexperiencesRelation->save();
+	}
 ?>
