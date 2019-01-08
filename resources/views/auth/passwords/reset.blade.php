@@ -1,22 +1,19 @@
-@extends('layouts.app')
+@extends('frontend.layouts.app')
 
 @section('content')
-<div class="container">
-    <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default">
-                <div class="panel-heading">Reset Password</div>
-
-                <div class="panel-body">
-                    <form class="form-horizontal" method="POST" action="{{ route('password.request') }}">
+<section class="page_inner innertop_gap">
+  <div class="container">
+    <div class="row clearfix">
+      <div class="col-md-12">
+        <div class="login_form">
+                    <form class="login100-form" method="POST" action="{{ route('password.request') }}">
                         {{ csrf_field() }}
-
+                        <span class="login100-form-title">Reset password</span>
                         <input type="hidden" name="token" value="{{ $token }}">
-
+                        <div class="form_box">
                         <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                            <label for="email" class="col-md-4 control-label">E-Mail Address</label>
-
-                            <div class="col-md-6">
+                            
+                            
                                 <input id="email" type="email" class="form-control" name="email" value="{{ $email or old('email') }}" required autofocus>
 
                                 @if ($errors->has('email'))
@@ -24,47 +21,39 @@
                                         <strong>{{ $errors->first('email') }}</strong>
                                     </span>
                                 @endif
-                            </div>
+                            
                         </div>
 
                         <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
-                            <label for="password" class="col-md-4 control-label">Password</label>
-
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control" name="password" required>
+                           
+                                <input id="password"  placeholder="Password*" type="password" class="form-control" name="password" required>
 
                                 @if ($errors->has('password'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('password') }}</strong>
                                     </span>
                                 @endif
-                            </div>
+                            
                         </div>
 
                         <div class="form-group{{ $errors->has('password_confirmation') ? ' has-error' : '' }}">
-                            <label for="password-confirm" class="col-md-4 control-label">Confirm Password</label>
-                            <div class="col-md-6">
-                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
-
+                                <input id="password-confirm" placeholder="Confirm Password*" type="password" class="form-control" name="password_confirmation" required>
                                 @if ($errors->has('password_confirmation'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('password_confirmation') }}</strong>
                                     </span>
                                 @endif
-                            </div>
+                           
                         </div>
 
-                        <div class="form-group">
-                            <div class="col-md-6 col-md-offset-4">
-                                <button type="submit" class="btn btn-primary">
-                                    Reset Password
-                                </button>
-                            </div>
-                        </div>
+                        <div class="form_btn">
+                        <button class="login100-form-btn" type="submit">Reset</button>
+                      </div>
+                      </div>
                     </form>
-                </div>
-            </div>
+               </div>
+          </div>
         </div>
-    </div>
-</div>
+     </div>
+</section>
 @endsection

@@ -36,6 +36,7 @@
                   
                   <form class="form-horizontal" method="POST" action="{{ route('admin.login.submit') }}">
                   {{ csrf_field() }}
+                   
                     <div class="row">
                       <div class="col-md-12">
                         <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
