@@ -141,34 +141,8 @@
 		$last_name = (strpos($name, ' ') === false) ? '' : preg_replace('#.*\s([\w-]*)$#', '$1', $name);
 		$first_name = trim( preg_replace('#'.$last_name.'#', '', $name ) );
 		return array($first_name, $last_name);
-
-
 	}
 
-	 //create header nav from header_nav array constants
-	function get_header_navigation($classes="", $id=""){
-		$header_nav=Config::get('constants.header_nav');
-		//var_dump($header_nav);
-		$html='';
-		 if(!empty($header_nav)){
-			$active_slug= Request::segment(1);
-			$html .='<ul class="'.$classes.'" id="'.$id.'">';
-				foreach ($header_nav as $key => $value) {
-					$selected= ($active_slug==$key ? ' class="active"' : ' ');
-					$html .='<li><a href="'.url($key).'" '.$selected.' >'.$value.'</a></li>';
-				}
-			$html .='</ul>';
-		}
-		return $html;
-	}
-    
-    //check slug exist in header_nav constants
-	function is_nav($slug){
-		$header_nav=Config::get('constants.header_nav');
-		if(array_key_exists($slug, $header_nav)){
-			return true;
-		}
-
-	}
+	
 
 ?>
