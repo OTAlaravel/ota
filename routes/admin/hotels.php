@@ -10,19 +10,5 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-
-Route::group(['prefix' => LaravelLocalization::setLocale()], function()
-{
-	
-	require(base_path() . '/routes/front/front_base.php');
-
-});
-
-
-Route::prefix('admin')->group(function()
-{
-	require(base_path() . '/routes/admin/admin_base.php');
-	
-});
-
+	Route::get('/hotels', 'Admin\HotelsController@index')->name('admin.hotels');
+	Route::post('/hotels/uploadcsv', 'Admin\HotelsController@uploadcsv')->name('admin.hotels.uploadcsv');

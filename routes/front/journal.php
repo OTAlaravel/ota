@@ -11,18 +11,5 @@
 |
 */
 
-
-Route::group(['prefix' => LaravelLocalization::setLocale()], function()
-{
-	
-	require(base_path() . '/routes/front/front_base.php');
-
-});
-
-
-Route::prefix('admin')->group(function()
-{
-	require(base_path() . '/routes/admin/admin_base.php');
-	
-});
-
+Route::get('journal/posts', 'JournalController@Index')->name('journal.posts');
+Route::get('journal/{slug}', 'JournalController@Index')->name('journal.details');

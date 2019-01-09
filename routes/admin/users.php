@@ -11,18 +11,7 @@
 |
 */
 
-
-Route::group(['prefix' => LaravelLocalization::setLocale()], function()
-{
+	Route::get('/users', 'Admin\UsersController@index')->name('admin.users');
+	Route::get('/users/{username}', 'Admin\UsersController@edit')->name('admin.user.edit');
+	Route::post('/users/{user}', 'Admin\UsersController@update')->name('admin.user.update');
 	
-	require(base_path() . '/routes/front/front_base.php');
-
-});
-
-
-Route::prefix('admin')->group(function()
-{
-	require(base_path() . '/routes/admin/admin_base.php');
-	
-});
-

@@ -14,7 +14,9 @@
     <div class="col-md-3 col-sm-4 header_top_right">
       <div class="header_top_right_inner">
         <ul class="list_header_account">
-          <li class="dropdown"><a href="">language</a>
+          <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">
+                          Language <span class="caret"></span></a>
                   <ul class="dropdown-menu">
                       <li> <a href="">Dashboard</a> </li>
                       <li> <a href="">My profile </a> </li>
@@ -29,8 +31,8 @@
                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">
                           Profile <span class="caret"></span></a>
                          <ul class="dropdown-menu">
-                           <li> <a href="{{ route('user.logout') }}">Dashboard</a> </li>
-                           <li> <a href="{{ route('user.logout') }}">My profile </a> </li>
+                           <li> <a href="{{ route('user.dashboard') }}">Dashboard</a> </li>
+                           <li> <a href="{{ route('user.myprofile') }}">My profile </a> </li>
                            <li> <a href="{{ route('user.logout') }}">Logout </a> </li>
                         </ul>
                   </li>
@@ -46,7 +48,6 @@
 <section class="navigation_sec" id="sticky-wrap">
   <div class="container">
     <div class="navigation_area"> 
-      
       <div class="wsmenucontainer clearfix">
         <div class="overlapblackbg"></div>
         <div class="wsmobileheader clearfix"> <a id="wsnavtoggle" class="animated-arrow" title="Open menu"><span></span></a> <a class="smallogo" title="Small Logo"><img src="images/logo.png" width="170" alt=""  /></a>
@@ -57,6 +58,7 @@
             <!--<li><a href=""><span class="fa fa-phone"></span></a></li>-->
           </ul>
         </div>
+
         <header>
           <div class="container">
             <div class="header-content bigmegamenu clearfix"> 
@@ -69,15 +71,7 @@
                     <li><a href="">Sign In</a></li>
                   </ul>
                 </div>
-                <ul class="mobile-sub wsmenu-list">
-                  <li><a href="#" class="active">Destinations</a></li>
-                  <li><a href="#">Accommodation Types</a> </li>
-                  <li><a href="#">Experiences</a></li>
-                  <li><a href="#">Inspirations</a></li>
-                  <li><a href="#">Target Species</a></li>
-                  <li><a href="#">Journal</a></li>
-                 
-                </ul>
+               <?php echo get_header_navigation('mobile-sub wsmenu-list','xyz'); ?>
               </nav>
             </div>
           </div>
@@ -86,7 +80,8 @@
     </div>
     <div class="clearfix"></div>
   </div>
-    <div class="header_search_sec" id="desktop_search">
+<form id="desk_search" action="{{route('hotels.search')}}" method="get">
+  <div class="header_search_sec" id="desktop_search">
     <div class="container">
       <div class="header_search_area">
         <div class="form_box_large search_box_comman">
@@ -136,8 +131,12 @@
       </div>
     </div>
   </div>
+
+  </form>
+
   <!-- mobile_search_sec -->
-  <div class="mobile_search_sec" id="mobile_search">
+  <form  id="mob_search"  action="{{route('hotels.search')}}" method="get">
+    <div class="mobile_search_sec" id="mobile_search">
     <div class="container">
       <div class="mobile_search_area">
         <div class="mobile_search_big"> 
@@ -159,6 +158,7 @@
       <div class="container"> 
         <!-- mobile_search_form_area -->
         <div class="mobile_search_form_area" id="mobile_search_area_toggle">
+        
           <div class="header_search_area">
             <div class="form_box_large search_box_comman">
               <div class="header_search">
@@ -205,10 +205,12 @@
             </div>
             <div class="clearfix"></div>
           </div>
+      
         </div>
       </div>
     </section>
   </div>
+  </form>
   </section>
 <!--/////////////////////////////////////////-->
 </div>

@@ -11,18 +11,4 @@
 |
 */
 
-
-Route::group(['prefix' => LaravelLocalization::setLocale()], function()
-{
-	
-	require(base_path() . '/routes/front/front_base.php');
-
-});
-
-
-Route::prefix('admin')->group(function()
-{
-	require(base_path() . '/routes/admin/admin_base.php');
-	
-});
-
+Route::get('/{slug}', 'PagesController@Index')->name('page.link');
