@@ -161,6 +161,7 @@
 		if(array_key_exists($slug, $header_nav)){
 			return true;
 		}
+	}
 
 	function split_name($name) {
 		$name = trim($name);

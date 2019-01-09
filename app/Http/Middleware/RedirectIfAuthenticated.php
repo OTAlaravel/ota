@@ -27,7 +27,7 @@ class RedirectIfAuthenticated
                 break;
             
             default:
-                 \Session::put('language',\Config::get('app.locale'));
+                 
                 if (Auth::guard($guard)->check()) {
                     return redirect('/users/dashboard');
                 }
