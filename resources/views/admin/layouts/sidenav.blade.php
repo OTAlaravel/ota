@@ -4,8 +4,12 @@
             OTA
         </a>
     </div>
+
     <div class="sidebar-wrapper">
+
         <ul class="nav">
+
+       
 
             <!-- Dashboard -->
             <li class="nav-item {{ Request::is('admin') ? 'active' : '' }} ">
@@ -47,35 +51,57 @@
                 </a>
             </li>
 
+            {{--  <li class="nav-item ">
+            <a class="nav-link" data-toggle="collapse" href="#pagesExamples">
+              <i class="material-icons">image</i>
+              <p> Pages
+                <b class="caret"></b>
+              </p>
+            </a>
+            <div class="collapse" id="pagesExamples">
+              <ul class="nav">
+                <li class="nav-item ">
+                  <a class="nav-link" href="../examples/pages/pricing.html">
+                    <span class="sidebar-mini"> P </span>
+                    <span class="sidebar-normal"> Pricing </span>
+                  </a>
+                </li>
+               
+              </ul>
+            </div>
+          </li> --}}
             <!-- Masters -->
             <li class="nav-item">
-                <a class="nav-link" id ="flip" href="javascript:void(0);">
+                <a class="nav-link" data-toggle="collapse" href="#masters" >
                     <i class="material-icons">library_books</i>
-                    <p>All Masters</p>
-                    <i class="material-icons arrow_icon">keyboard_arrow_right</i>
+                    <p>All Masters
+                  <b class="caret"></b>
+                  </p>
                 </a>
-                <div id="panel">
-                	<ul class="panel_sub">
+                <div class="collapse" id="masters">
+                	<ul class="nav">
                 		<li class="nav-item {{ Request::is('admin/countries*') ? 'active' : '' }}">
-                			<a href="{{ route('admin.countries') }}">Country<i class="material-icons">fiber_manual_record</i></a>
+                			<a href="{{ route('admin.countries') }}" class="nav-link">Country<i class="material-icons">fiber_manual_record</i>
+                            
+                            </a>
                 		</li>
                 		<li class="nav-item {{ Request::is('admin/states*') ? 'active' : '' }}">
-                			<a href="{{ route('admin.states') }}">State<i class="material-icons">fiber_manual_record</i></a>
+                			<a href="{{ route('admin.states') }}" class="nav-link">State<i class="material-icons">fiber_manual_record</i></a>
                 		</li>
                 		<li class="nav-item {{ Request::is('admin/accommodations*') ? 'active' : '' }}">
-                			<a href="{{ route('admin.accommodations') }}">Accommodations<i class="material-icons">fiber_manual_record</i></a>
+                			<a href="{{ route('admin.accommodations') }}" class="nav-link">Accommodations<i class="material-icons">fiber_manual_record</i></a>
                 		</li>
                 		<li class="nav-item {{ Request::is('admin/species*') ? 'active' : '' }}">
-                			<a href="{{ route('admin.species') }}">Species<i class="material-icons">fiber_manual_record</i></a>
+                			<a href="{{ route('admin.species') }}" class="nav-link">Species<i class="material-icons">fiber_manual_record</i></a>
                 		</li>
                         <li class="nav-item {{ Request::is('admin/inspirations*') ? 'active' : '' }}">
-                            <a href="{{ route('admin.inspirations') }}">Inspirations<i class="material-icons">fiber_manual_record</i></a>
+                            <a href="{{ route('admin.inspirations') }}" class="nav-link">Inspirations<i class="material-icons">fiber_manual_record</i></a>
                         </li>
                         <li class="nav-item {{ Request::is('admin/experiences*') ? 'active' : '' }}">
-                            <a href="{{ route('admin.experiences') }}">Experiences<i class="material-icons">fiber_manual_record</i></a>
+                            <a href="{{ route('admin.experiences') }}" class="nav-link">Experiences<i class="material-icons">fiber_manual_record</i></a>
                         </li>
                         <li class="nav-item {{ Request::is('admin/regions*') ? 'active' : '' }}">
-                            <a href="{{ route('admin.regions') }}">Regions<i class="material-icons">fiber_manual_record</i></a>
+                            <a href="{{ route('admin.regions') }}" class="nav-link">Regions<i class="material-icons">fiber_manual_record</i></a>
                         </li>
                     </ul>
                 </div>
