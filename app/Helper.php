@@ -142,6 +142,7 @@
 		$first_name = trim( preg_replace('#'.$last_name.'#', '', $name ) );
 		return array($first_name, $last_name);
 
+
 	}
 
 	 //create header nav from header_nav array constants
@@ -167,4 +168,7 @@
 		if(array_key_exists($slug, $header_nav)){
 			return true;
 		}
+
+	}
+
 ?>

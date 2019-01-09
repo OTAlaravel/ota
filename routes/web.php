@@ -23,6 +23,6 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function()
 Route::prefix('admin')->group(function()
 {
 	require(base_path() . '/routes/admin/admin_base.php');
-	
+
 });
 
