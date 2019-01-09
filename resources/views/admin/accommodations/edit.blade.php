@@ -38,7 +38,7 @@
             <?php 
               $lang = @\Session::get('language');
             ?>
-            <form id="EditAccommodation" method="post" action="{{ route('admin.accommodations.update', ['lang' => $lang, 'id' => $accommodation->id]) }}">
+            <form id="EditAccommodation" method="post" action="{{ route('admin.accommodations.update', ['lang' => $lang, 'id' => $accommodation->id]) }}" enctype="multipart/form-data">
               {{ csrf_field() }}
               <input type="hidden" id="lang_code" name="locale" value="en">
               <div class="row">
@@ -50,6 +50,22 @@
                   <div class="form-group">
                    <div>Accommodation slug: &nbsp;<i><span id="accommodations_slug_lebel">{{ $accommodation->accommodations_slug }}</span></i></div> 
                    <input type="hidden" id="accommodations_slug" name="accommodations_slug" value="{{ $accommodation->accommodations_slug }}">
+                  </div>
+                  <div class="form-group">
+                    <label class="bmd-label-floating">Accommodation Image</label>
+                    <div class="file-field">
+                      <div class="z-depth-1-half mb-4">
+                        @if($accommodation->accommodations_image)
+                        <img src="{{ Storage::disk('local')->url($accommodation->accommodations_image) }}" class="img-fluid" alt="example placeholder" width="300px" height="200px">
+                        @endif
+                      </div>
+                      <div class="d-flex">
+                        <div class="btn btn-primary btn-round btn-file">
+                          <span>Choose file</span>
+                          <input type="file" name="accommodations_image" id="accommodations_image">
+                        </div>
+                      </div>
+                    </div>
                   </div>
                   <div class="form-group">
                     <label class="bmd-label-floating">Accommodation Status</label>

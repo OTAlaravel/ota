@@ -44,6 +44,13 @@
                     <label class="bmd-label-floating">Experiences Name</label>
                     <input type="text" id="experiences_name" name="experiences_name" class="form-control">
                   </div>
+                   <div class="form-group">
+                    <label class="bmd-label-floating">Experiences Image</label>
+                    <span class="btn btn-primary btn-round btn-file">
+                      <span class="fileinput-new">Choose file</span>
+                      <input type="file" name="experiences_image" id="experiences_image" />
+                    </span>
+                  </div>
                   <div class="form-group">
                     <label class="bmd-label-floating">Experiences Status</label>
                     <select id="status" name="status" class="form-control">

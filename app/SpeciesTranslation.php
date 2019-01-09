@@ -8,5 +8,5 @@ class SpeciesTranslation extends Model
 {
     public $timestamps = false;
 
-        protected $fillable = ['locale', 'species_name'];
+        protected $fillable = ['locale', 'species_name', 'species_image'];
 }

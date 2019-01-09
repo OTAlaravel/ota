@@ -498,7 +498,15 @@ function debounce(func, wait, immediate) {
 };
 
 $(document).ready(function(){
-  $("#flip").click(function(){
+  $("#flip").click(function(e){
+	  e.preventDefault;
     $("#panel").slideToggle("slow");
   });
 });
+
+$(document).ready(function() {
+    $("#panel").find("#panel li.active");
+	  $("#panel").css("display", "block");
+});
+
+

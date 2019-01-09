@@ -8,5 +8,5 @@ class InspirationsTranslation extends Model
 {
     public $timestamps = false;
 
-        protected $fillable = ['locale', 'inspirations_name'];
+        protected $fillable = ['locale', 'inspirations_name', 'inspirations_image'];
 }

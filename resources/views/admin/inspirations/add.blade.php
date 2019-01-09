@@ -35,7 +35,7 @@
           </div>
           <div class="card-body">
             @include('admin.layouts.messages')
-            <form id="AddNewInspirations" method="post" action="{{ route('admin.inspirations.doadd') }}">
+            <form id="AddNewInspirations" method="post" action="{{ route('admin.inspirations.doadd') }}" enctype="multipart/form-data">
               {{ csrf_field() }}
               <input type="hidden" id="lang_code" name="locale" value="en">
               <div class="row">
@@ -43,6 +43,13 @@
                   <div class="form-group">
                     <label class="bmd-label-floating">Inspirations Name</label>
                     <input type="text" id="inspirations_name" name="inspirations_name" class="form-control">
+                  </div>
+                  <div class="form-group">
+                    <label class="bmd-label-floating">Inspirations Image</label>
+                    <span class="btn btn-primary btn-round btn-file">
+                      <span class="fileinput-new">Choose file</span>
+                      <input type="file" name="inspirations_image" id="inspirations_image" />
+                    </span>
                   </div>
                   <div class="form-group">
                     <label class="bmd-label-floating">Inspirations Status</label>

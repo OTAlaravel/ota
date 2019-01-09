@@ -35,7 +35,7 @@
           </div>
           <div class="card-body">
             @include('admin.layouts.messages')
-            <form id="AddNewAccommodation" method="post" action="{{ route('admin.accommodations.doadd') }}">
+            <form id="AddNewAccommodation" method="post" action="{{ route('admin.accommodations.doadd') }}" enctype="multipart/form-data">
               {{ csrf_field() }}
               <input type="hidden" id="lang_code" name="locale" value="en">
               <div class="row">
@@ -47,6 +47,13 @@
                   <div class="form-group">
                    <div>Accommodation slug: &nbsp;<i><span id="accommodations_slug_lebel"></span></i></div> 
                    <input type="hidden" id="accommodations_slug" name="accommodations_slug" value="">
+                  </div>
+                   <div class="form-group">
+                    <label class="bmd-label-floating">Accommodation Image</label>
+                    <span class="btn btn-primary btn-round btn-file">
+                      <span class="fileinput-new">Choose file</span>
+                      <input type="file" name="accommodations_image" id="accommodations_image" />
+                    </span>
                   </div>
                   <div class="form-group">
                     <label class="bmd-label-floating">Accommodation Status</label>

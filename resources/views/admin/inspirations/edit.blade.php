@@ -38,7 +38,7 @@
             <?php 
               $lang = @\Session::get('language');
             ?>
-            <form id="EditInspirations" method="post" action="{{ route('admin.inspirations.update', ['lang' => $lang, 'id' => $inspiration->id]) }}">
+            <form id="EditInspirations" method="post" action="{{ route('admin.inspirations.update', ['lang' => $lang, 'id' => $inspiration->id]) }}" enctype="multipart/form-data">
               {{ csrf_field() }}
               <input type="hidden" id="lang_code" name="locale" value="en">
               <div class="row">
@@ -46,6 +46,22 @@
                   <div class="form-group">
                     <label class="bmd-label-floating">Inspirations Name</label>
                     <input type="text" id="inspirations_name" name="inspirations_name" class="form-control" value="{{ $inspiration->inspirations_name }}">
+                  </div>
+                  <div class="form-group">
+                    <label class="bmd-label-floating">Inspirations Image</label>
+                    <div class="file-field">
+                      <div class="z-depth-1-half mb-4">
+                        @if($inspiration->inspirations_image)
+                        <img src="{{ Storage::disk('local')->url($inspiration->inspirations_image) }}" class="img-fluid" alt="example placeholder" width="300px" height="200px">
+                        @endif
+                      </div>
+                      <div class="d-flex">
+                        <div class="btn btn-primary btn-round btn-file">
+                          <span>Choose file</span>
+                          <input type="file" name="inspirations_image" id="inspirations_image">
+                        </div>
+                      </div>
+                    </div>
                   </div>
                   <div class="form-group">
                     <label class="bmd-label-floating">Inspirations Status</label>

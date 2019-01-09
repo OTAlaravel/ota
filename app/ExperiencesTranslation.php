@@ -8,5 +8,5 @@ class ExperiencesTranslation extends Model
 {
     public $timestamps = false;
 
-        protected $fillable = ['locale', 'experiences_name'];
+        protected $fillable = ['locale', 'experiences_name', 'experiences_image'];
 }
