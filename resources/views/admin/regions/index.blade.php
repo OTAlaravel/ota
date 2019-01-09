@@ -9,7 +9,7 @@
 <div class="content">
     <div class="container-fluid">
         <div class="card">
-            <div class="card-header card-header-warning">
+            <div class="card-header card-header-primary">
                 <h3 class="card-title ">Regions
                     <div class="float-right">
                         <select id="sitelang" name="sitelang" class="browser-default btn-round custom-select">

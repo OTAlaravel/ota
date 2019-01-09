@@ -22,7 +22,7 @@
     <div class="row">
       <div class="col-md-12">
         <div class="card">
-          <div class="card-header card-header-warning">
+          <div class="card-header card-header-primary">
             <h3 class="card-title">Edit Species
             <div class="float-right">
               <select id="sitelang" name="sitelang" class="browser-default btn-round custom-select">
@@ -38,7 +38,7 @@
             <?php 
               $lang = @\Session::get('language');
             ?>
-            <form id="EditSpecies" method="post" action="{{ route('admin.species.update', ['lang' => $lang, 'id' => $species->id]) }}">
+            <form id="EditSpecies" method="post" action="{{ route('admin.species.update', ['lang' => $lang, 'id' => $species->id]) }}" enctype="multipart/form-data">
               {{ csrf_field() }}
               <input type="hidden" id="lang_code" name="locale" value="en">
               <div class="row">
@@ -46,6 +46,22 @@
                   <div class="form-group">
                     <label class="bmd-label-floating">Species Name</label>
                     <input type="text" id="species_name" name="species_name" class="form-control" value="{{ $species->species_name }}">
+                  </div>
+                  <div class="form-group">
+                    <label class="bmd-label-floating">Species Image</label>
+                    <div class="file-field">
+                      <div class="z-depth-1-half mb-4">
+                        @if($species->species_image)
+                        <img src="{{ Storage::disk('local')->url($species->species_image) }}" class="img-fluid" alt="example placeholder" width="300px" height="200px">
+                        @endif
+                      </div>
+                      <div class="d-flex">
+                        <div class="btn btn-primary btn-round btn-file">
+                          <span>Choose file</span>
+                          <input type="file" name="species_image" id="species_image">
+                        </div>
+                      </div>
+                    </div>
                   </div>
                   <div class="form-group">
                     <label class="bmd-label-floating">Species Status</label>

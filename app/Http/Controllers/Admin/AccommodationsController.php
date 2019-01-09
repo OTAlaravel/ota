@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\admin;
 use App\Accommodations;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use App\Http\Controllers\Controller;
 
 class AccommodationsController extends Controller
@@ -26,12 +27,21 @@ class AccommodationsController extends Controller
 
    
     public function doadd(Request $request)
-    {
+    {   
         $this->validate($request, [
             'accommodations_name' => 'required|string|max:255',
+            'accommodations_image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
         $lang =  \App::getLocale(); 
         $info =  Accommodations::create($request->all());
+        $accommodations = Accommodations::find($info->id);
+        $file = $request->file('accommodations_image');
+        if($file){
+            $accommodations_image = $file->getClientOriginalName();
+            $path = $request->accommodations_image->store('public/uploads');
+            $accommodations->accommodations_image = $path;
+        }
+        $accommodations->save();
         return redirect()->back()->with('message', 'Accommodation added successfully!');
     }
 
@@ -46,8 +56,19 @@ class AccommodationsController extends Controller
     {
         $this->validate($request, [
             'accommodations_name' => 'required|string|max:255',
+            'accommodations_image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
         $accommodation = Accommodations::where('id', '=' , $id)->get()->first();
+        $lang =  \App::getLocale(); 
+        $file = $request->file('accommodations_image');
+        if($file){
+            if($accommodation->accommodations_image){
+                Storage::delete($accommodation->accommodations_image);
+            }
+            $accommodations_image = $file->getClientOriginalName();
+            $path = $request->accommodations_image->store('public/uploads');
+            $accommodation->accommodations_image = $path;
+        }
         $accommodation->locale = $lang;
         $accommodation->accommodations_name = $request->accommodations_name;
         $accommodation->accommodations_slug = $request->accommodations_slug;
@@ -60,6 +81,9 @@ class AccommodationsController extends Controller
     {
         $accommodation = Accommodations::where('id', '=' , $id)->get()->first();
         $accommodation->translate($lang);
+        if($accommodation->accommodations_image){
+            Storage::delete($accommodation->accommodations_image);
+        }
         Accommodations::where('id', $id)->delete();
         return redirect()->back()->with('message', 'Accommodation deleted successfully!');
     }

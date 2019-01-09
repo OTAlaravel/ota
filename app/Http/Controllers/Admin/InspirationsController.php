@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\admin;
 use App\Inspirations;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use App\Http\Controllers\Controller;
 
 class InspirationsController extends Controller
@@ -28,9 +29,18 @@ class InspirationsController extends Controller
     {
         $this->validate($request, [
             'inspirations_name' => 'required|string|max:255',
+            'inspirations_image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
         $lang =  \App::getLocale();
         $info = Inspirations::create($request->all());
+        $inspiration = Inspirations::find($info->id);
+        $file = $request->file('inspirations_image');
+        if($file){
+            $inspirations_image = $file->getClientOriginalName();
+            $path = $request->inspirations_image->store('public/uploads');
+            $inspiration->inspirations_image = $path;
+        }
+        $inspiration->save();
         return redirect()->back()->with('message', 'Inspirations added successfully!');
     }
 
@@ -45,8 +55,19 @@ class InspirationsController extends Controller
     {
         $this->validate($request, [
             'inspirations_name' => 'required|string|max:255',
+            'inspirations_image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
         $inspiration = Inspirations::where('id', '=' , $id)->get()->first();
+        $lang =  \App::getLocale(); 
+        $file = $request->file('inspirations_image');
+        if($file){
+            if($inspiration->inspirations_image){
+                Storage::delete($inspiration->inspirations_image);
+            }
+            $inspirations_image = $file->getClientOriginalName();
+            $path = $request->inspirations_image->store('public/uploads');
+            $inspiration->inspirations_image = $path;
+        }
         $inspiration->locale = $lang;
         $inspiration->inspirations_name = $request->inspirations_name;
         $inspiration->status = $request->status;
@@ -58,6 +79,9 @@ class InspirationsController extends Controller
     {
         $inspiration = Inspirations::where('id', '=' , $id)->get()->first();
         $inspiration->translate($lang);
+        if($inspiration->inspirations_image){
+            Storage::delete($inspiration->inspirations_image);
+        }
         Inspirations::where('id', $id)->delete();
         return redirect()->back()->with('message', 'Inspirations deleted successfully!');
     }

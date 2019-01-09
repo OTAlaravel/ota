@@ -9,14 +9,12 @@
 <div class="content">
     <div class="container-fluid">
         <div class="card">
-            <div class="card-header card-header-warning">
+            <div class="card-header card-header-primary">
                 <h3 class="card-title ">Hotels
                     <div class="float-right">
                         <select id="sitelang" name="sitelang" class="browser-default btn-round custom-select">
                             <?php @langOption(); ?>
                         </select>
-                        <a href="{{ route('admin.experiences.add') }}" class="btn-sm btn-success btn-round "> 
-                            <i class="material-icons">create</i> New</a>
                             <a href="#" class="btn-sm btn-info btn-round " data-toggle="modal" data-target="#csvuploadmodal"> 
                                 <i class="material-icons">backup</i> Upload CSV</a>
 
@@ -56,7 +54,7 @@
                                      <i class="fa fa-toggle-off" aria-hidden="true"></i>
                                  </a>
                                  @endif
-                                 <form id="delete-form-{{ $hotel->id }}" method="post" action="{{ route('admin.inspirations.del', ['lang' => $hotel->locale, 'id' => $hotel->id]) }}" style="display: none;">
+                                 <form id="delete-form-{{ $hotel->id }}" method="post" action="{{ route('admin.hotels.del', ['lang' => $hotel->locale, 'id' => $hotel->id]) }}" style="display: none;">
                                     {{ csrf_field() }}
                                     {{ method_field('DELETE') }}
                                 </form>

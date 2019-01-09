@@ -496,3 +496,17 @@ function debounce(func, wait, immediate) {
     if (immediate && !timeout) func.apply(context, args);
   };
 };
+
+/*$(document).ready(function(){
+  $("#flip").click(function(e){
+	  e.preventDefault;
+    $("#panel").slideToggle("slow");
+  });
+});
+
+$(document).ready(function() {
+    $("#panel").find("#panel li.active");
+	  $("#panel").css("display", "block");
+});*/
+
+

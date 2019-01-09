@@ -8,5 +8,5 @@ class AccommodationsTranslation extends Model
 {
     public $timestamps = false;
 
-        protected $fillable = ['locale', 'accommodations_name','accommodations_slug'];
+        protected $fillable = ['locale', 'accommodations_name','accommodations_slug', 'accommodations_image'];
 }

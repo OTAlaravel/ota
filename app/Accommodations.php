@@ -8,7 +8,7 @@ class Accommodations extends Model
 {
     use \Dimsav\Translatable\Translatable;
 
-    public $translatedAttributes = ['locale', 'accommodations_name','accommodations_slug'];
+    public $translatedAttributes = ['locale', 'accommodations_name','accommodations_slug', 'accommodations_image'];
 
-    protected $fillable = ['locale', 'accommodations_name','accommodations_slug'];
+    protected $fillable = ['locale', 'accommodations_name','accommodations_slug', 'accommodations_image'];
 }

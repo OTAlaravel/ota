@@ -22,7 +22,7 @@
     <div class="row">
       <div class="col-md-12">
         <div class="card">
-          <div class="card-header card-header-warning">
+          <div class="card-header card-header-primary">
             <h3 class="card-title">Add New Species
             <div class="float-right">
               <select id="sitelang" name="sitelang" class="browser-default btn-round custom-select">
@@ -35,7 +35,7 @@
           </div>
           <div class="card-body">
             @include('admin.layouts.messages')
-            <form id="AddNewSpecies" method="post" action="{{ route('admin.species.doadd') }}">
+            <form id="AddNewSpecies" method="post" action="{{ route('admin.species.doadd') }}" enctype="multipart/form-data">
               {{ csrf_field() }}
               <input type="hidden" id="lang_code" name="locale" value="en">
               <div class="row">
@@ -43,6 +43,13 @@
                   <div class="form-group">
                     <label class="bmd-label-floating">Species Name</label>
                     <input type="text" id="species_name" name="species_name" class="form-control">
+                  </div>
+                   <div class="form-group">
+                    <label class="bmd-label-floating">Species Image</label>
+                    <span class="btn btn-primary btn-round btn-file">
+                      <span class="fileinput-new">Choose file</span>
+                      <input type="file" name="species_image" id="species_image" />
+                    </span>
                   </div>
                   <div class="form-group">
                     <label class="bmd-label-floating">Species Status</label>
