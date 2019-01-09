@@ -27,7 +27,7 @@
                     <div class="row">
                         <div class="col-md-12">
                           <div class="card">
-                            <div class="card-header card-header-warning">
+                            <div class="card-header card-header-primary">
                               <h3 class="card-title">Edit post
                                 <div class="float-right">
                                   <select id="sitelang" name="sitelang" class="browser-default btn-round custom-select">

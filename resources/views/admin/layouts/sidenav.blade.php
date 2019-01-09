@@ -19,12 +19,41 @@
                     <p>User management</p>
                 </a>
             </li>
+            
+            <li class="nav-item">
+                <a class="nav-link" id ="flip" href="javascript:void(0);">
+                    <i class="material-icons">library_books</i>
+                    <p>Masters</p>
+                    <i class="material-icons arrow_icon">keyboard_arrow_right</i>
+                </a>
+                <div id="panel">
+                	<ul class="panel_sub">
+                		<li class="nav-item {{ Request::is('admin/countries*') ? 'active' : '' }}">
+                			<i class="material-icons">fiber_manual_record</i>
+                			<a href="{{ route('admin.countries') }}">Country</a>
+                		</li>
+                		<li class="nav-item {{ Request::is('admin/states*') ? 'active' : '' }}">
+                			<i class="material-icons">fiber_manual_record</i>
+                			<a href="{{ route('admin.states') }}">State</a>
+                		</li>
+                		<li>
+                			<i class="material-icons">fiber_manual_record</i>
+                			<a href="#">Treeview menu 1</a>
+                		</li>
+                		<li>
+                			<i class="material-icons">fiber_manual_record</i>
+                			<a href="#">Treeview menu 1</a>
+                		</li>
+                	</ul>
+                </div>
+            </li>
 
             <li class="nav-item {{ Request::is('admin/pages*') ? 'active' : '' }}  ">
-                <a class="nav-link" href="{{ route('admin.pages') }}">
+                <a class="nav-link" id ="flip" href="{{ route('admin.pages') }}">
                     <i class="material-icons">library_books</i>
                     <p>Pages management</p>
                 </a>
+                <div id="panel">Hello world!</div>
             </li>
 
             <li class="nav-item {{ Request::is('admin/posts*') ? 'active' : '' }}  ">

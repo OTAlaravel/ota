@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\admin;
+use App\User;
 use App\Hotels;
 use App\HotelSpeciesRelation;
 use App\HotelAccommodationRelation;
@@ -42,12 +43,12 @@ class HotelsController extends Controller
                         $town = $getData[3];
                         $hotel_name = $getData[4];
                         $rating = $getData[5];
-                        if($getData[6] == 1){
+                        if($getData[6] != ""){
                            $contact_status = 'R';
-                        }else{
+                        }
+                        if($getData[7] != ""){
                            $contact_status = 'D';
                         }
-                        /*$contact_status = $getData[7];*/
                         $image_code = $getData[8];
                         $email_id = $getData[9];
                         $nearest_airport = $getData[10];
@@ -59,6 +60,24 @@ class HotelsController extends Controller
                         $enthusiast_services = $getData[16];
                         $activity_season = $getData[17];
                         $species = explode(",", $getData[18]);
+                        $contact_person_name = $getData[71];
+                        $contact_person_email = $getData[72];
+                        if($contact_person_email !=""){
+                            $user = new User;
+                            $username = strstr($contact_person_email,'@',true);
+                            $user->username = $username;
+                            $user->email = $contact_person_email;
+                            $user->country_code = 101;
+                            $user->role = 1;
+                            $user->password = bcrypt('1234');
+                            if($contact_person_name != ""){
+                                $user->first_name = split_name($contact_person_name)[0];
+                                $user->last_name = split_name($contact_person_name)[1];
+                            }
+                            $user->save();
+                            $user_id = $user->id;
+
+                        }
                         $hotel = new Hotels;
                         //=======Insert hotel=====
                         $lang =  \App::getLocale(); 
@@ -80,6 +99,7 @@ class HotelsController extends Controller
                         $hotel->image_code = $image_code;
                         $hotel->contact_status = $contact_status;
                         $hotel->rating = $rating;
+                        $hotel->user_id = $user_id;
                         $hotel->save();
                         $hotel_id = $hotel->id;
                         
@@ -188,6 +208,7 @@ class HotelsController extends Controller
                         $HotelContact = new HotelContact;
                         $HotelContact->website = $website;
                         $HotelContact->address = $address;
+                        $HotelContact->hotel_id = $hotel_id;
                         $HotelContact->contact_person_name = $contact_person_name;
                         $HotelContact->contact_person_email = $contact_person_email;
                         $HotelContact->contact_person_phone = $contact_person_phone;
@@ -227,8 +248,12 @@ class HotelsController extends Controller
         //
     }
 
-    public function destroy($id)
+    public function doDelete($lang, $id)
     {
+        $hotels = Hotels::where('id', '=' , $id)->get()->first();
+        $hotels->translate($lang);
+        Hotels::where('id', $id)->delete();
+        return redirect()->back()->with('message', 'Hotel deleted successfully!');
         
     }
 }
