@@ -37,11 +37,14 @@ class HotelsController extends Controller
             do { 
                 if($row > 1){
                     if(!empty(array_filter($getData))){
+                        $hotel_name = $getData[4];
+                        $hotel_slug = createSlug($hotel_name);
+                        $contact_person_email = $getData[72];
+                        if(hotelSlugExists($hotel_slug) == false && emailExists($contact_person_email) == false){
                         $region_id = getRegionID($getData[0]);
                         $country_id = getCountryID($getData[1]);
                         $state_id = getStateID($getData[2], $country_id);
                         $town = $getData[3];
-                        $hotel_name = $getData[4];
                         $rating = $getData[5];
                         if($getData[6] != ""){
                            $contact_status = 'R';
@@ -61,13 +64,12 @@ class HotelsController extends Controller
                         $activity_season = $getData[17];
                         $species = explode(",", $getData[18]);
                         $contact_person_name = $getData[71];
-                        $contact_person_email = $getData[72];
                         if($contact_person_email !=""){
                             $user = new User;
                             $username = strstr($contact_person_email,'@',true);
                             $user->username = $username;
                             $user->email = $contact_person_email;
-                            $user->country_code = 101;
+                            $user->country_code = $country_id;
                             $user->role = 1;
                             $user->password = bcrypt('1234');
                             if($contact_person_name != ""){
@@ -83,6 +85,7 @@ class HotelsController extends Controller
                         $lang =  \App::getLocale(); 
                         $hotel->locale = $lang;
                         $hotel->hotels_name = $hotel_name;
+                        $hotel->hotels_slug = $hotel_slug;
                         $hotel->hotels_desc = $hotel_desc;
                         $hotel->region_id = $region_id;
                         $hotel->country_id = $country_id;
@@ -215,6 +218,7 @@ class HotelsController extends Controller
                         $HotelContact->save();
 
                     }
+                }
                 }
                 $row++;
             } while (($getData = fgetcsv($file, 0, ","))!== FALSE);
