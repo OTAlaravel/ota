@@ -17,10 +17,19 @@
     });
 
     Auth::routes();
+    
 	Route::get('/users/logout', 'Auth\LoginController@userLogout')->name('user.logout');
-	Route::get('/home', 'HomeController@index')->name('home');
-	Route::get('/users/dashboard', 'HomeController@index')->name('user.dashboard');
-	Route::get('/users/my-profile', 'HomeController@index')->name('user.myprofile');
+	//Route::get('/home', 'HomeController@index')->name('home');
+	
+	Route::get('/home', function () {
+      $user = auth('web')->user();
+      if($user->role!=1){
+      	return redirect('/hotelier/dashboard');
+      }else{
+      	return redirect('/customer/dashboard');
+      }
+    });
+	//Route::get('/users/my-profile', 'HomeController@index')->name('user.myprofile');
 
    require(base_path() . '/routes/front/customers.php');
    require(base_path() . '/routes/front/hoteliers.php');

@@ -10,4 +10,5 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+//Route::get('/{slug}/dashboard', 'ProfileController@index')->name('user.dashboard');
+//Route::get('/{slug}/profile', 'ProfileController@Profile')->name('user.profile');

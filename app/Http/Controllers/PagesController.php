@@ -24,9 +24,9 @@ class PagesController extends Controller
     public function index($slug)
     {
         if(is_nav($slug)){
-            echo 'yes';
-        }else{
-            
+           
+        }else if($slug=='admin'){
+            return redirect('/admin/dashboard');
         }
 
         return view('home');

@@ -15,7 +15,7 @@
       <div class="header_top_right_inner">
         <ul class="list_header_account">
           <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">
+             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">
                           Language <span class="caret"></span></a>
                   <ul class="dropdown-menu">
                       <li> <a href="">Dashboard</a> </li>
@@ -26,13 +26,13 @@
               @guest
                  <li><a href="{{ route('login') }}">Sign In</a></li>
                  <!--<li><a href="{{ route('register') }}">Register</a></li> -->
-              @else
+               @else
                    <li class="dropdown">
                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">
                           Profile <span class="caret"></span></a>
                          <ul class="dropdown-menu">
                            <li> <a href="{{ route('user.dashboard') }}">Dashboard</a> </li>
-                           <li> <a href="{{ route('user.myprofile') }}">My profile </a> </li>
+                           <li> <a href="{{ route('user.profile') }}">My profile </a> </li>
                            <li> <a href="{{ route('user.logout') }}">Logout </a> </li>
                         </ul>
                   </li>
