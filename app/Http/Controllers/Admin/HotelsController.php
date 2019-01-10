@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers\admin;
 use App\User;
+use Mail;
 use App\Hotels;
+use App\Species;
 use App\HotelSpeciesRelation;
 use App\HotelAccommodationRelation;
 use App\HotelExperiencesRelation;
@@ -37,10 +39,9 @@ class HotelsController extends Controller
             do { 
                 if($row > 1){
                     if(!empty(array_filter($getData))){
-                        $hotel_name = $getData[4];
+                        $hotel_name = trim($getData[4]);
                         $hotel_slug = createSlug($hotel_name);
-                        $contact_person_email = $getData[72];
-                        if(hotelSlugExists($hotel_slug) == false && emailExists($contact_person_email) == false){
+                        if(hotelSlugExists($hotel_slug) == false){
                         $region_id = getRegionID($getData[0]);
                         $country_id = getCountryID($getData[1]);
                         $state_id = getStateID($getData[2], $country_id);
@@ -64,21 +65,38 @@ class HotelsController extends Controller
                         $activity_season = $getData[17];
                         $species = explode(",", $getData[18]);
                         $contact_person_name = $getData[71];
+                        $contact_person_email = $getData[72];
                         if($contact_person_email !=""){
-                            $user = new User;
-                            $username = strstr($contact_person_email,'@',true);
-                            $user->username = $username;
-                            $user->email = $contact_person_email;
-                            $user->country_code = $country_id;
-                            $user->role = 1;
-                            $user->password = bcrypt('1234');
-                            if($contact_person_name != ""){
-                                $user->first_name = split_name($contact_person_name)[0];
-                                $user->last_name = split_name($contact_person_name)[1];
+                            $prev_user_id = emailExists($contact_person_email);
+                            if($prev_user_id != ""){
+                                $user_id = $prev_user_id;
+                                /*$data = array('name'=>"Virat Gandhi");
+                                Mail::send('admin.emails.usercreate', $data, function($message) {
+                                   $message->to('subhankar.dutta@met-technologies.com', 'Tutorials Point')->subject
+                                   ('Laravel Basic Testing Mail');
+                                   $message->from('xyz@gmail.com','Virat Gandhi');
+                               });*/
+                            }else{
+                                $user = new User;
+                                $username = strstr($contact_person_email,'@',true);
+                                $user->username = $username;
+                                $user->email = $contact_person_email;
+                                $user->country_code = $country_id;
+                                $user->role = 1;
+                                $user->password = bcrypt('1234');
+                                if($contact_person_name != ""){
+                                    $user->first_name = split_name($contact_person_name)[0];
+                                    $user->last_name = split_name($contact_person_name)[1];
+                                }
+                                $user->save();
+                                $user_id = $user->id;
+                                /*$data = array('name'=>"Virat Gandhi");
+                                Mail::send('admin.emails.usercreate', $data, function($message) {
+                                   $message->to('subhankar.dutta@met-technologies.com', 'Tutorials Point')->subject
+                                   ('Laravel Basic Testing Mail');
+                                   $message->from('xyz@gmail.com','Virat Gandhi');
+                               });*/
                             }
-                            $user->save();
-                            $user_id = $user->id;
-
                         }
                         $hotel = new Hotels;
                         //=======Insert hotel=====
@@ -242,9 +260,13 @@ class HotelsController extends Controller
         //
     }
 
-    public function edit($id)
-    {
-        //
+    public function edit($lang, $id)
+    {   
+        $hotels = Hotels::where('id', '=' , $id)->get()->first();
+        $hotels->translate($lang);
+        $species = Species::all();
+        $species_relation = HotelSpeciesRelation::where('hotel_id', '=' , $id)->get();
+        return view('admin.hotels.edit', compact('hotels', 'species', 'species_relation'));
     }
 
     public function update(Request $request, $id)

@@ -193,9 +193,35 @@
 	function emailExists($email){
 		$data = App\User::where('email', '=' , $email)->get()->first();
 		if(!empty($data)){
-			return true;
-		}else{
-			return false;
+			return $data->id;
+		}
+	}
+
+	function regionOption($id=''){
+		$region = App\Regions::all();
+		foreach ($region as $key => $value) {
+			if(isset($id)){
+				if($value->id == $id){
+					$selected='selected="selected"';
+			}else{
+				$selected='';
+			}
+			}
+			echo '<option value="'.$value->id.'" '.$selected.' >'.$value->regions_name.'</option>';
+		}
+	}
+
+	function stateOption($id=''){
+		$states = App\States::all();
+		foreach ($states as $key => $value) {
+			if(isset($id)){
+				if($value->id == $id){
+					$selected='selected="selected"';
+			}else{
+				$selected='';
+			}
+			}
+			echo '<option value="'.$value->id.'" '.$selected.' >'.$value->states_name.'</option>';
 		}
 	}
 

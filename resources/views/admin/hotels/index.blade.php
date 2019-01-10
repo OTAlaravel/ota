@@ -15,10 +15,8 @@
                         <select id="sitelang" name="sitelang" class="browser-default btn-round custom-select">
                             <?php @langOption(); ?>
                         </select>
-                            <a href="#" class="btn-sm btn-info btn-round " data-toggle="modal" data-target="#csvuploadmodal"> 
+                            <a href="javascript:void(0);" class="btn-sm btn-info btn-round " data-toggle="modal" data-target="#csvuploadmodal"> 
                                 <i class="material-icons">backup</i> Upload CSV</a>
-
-
                             </div>
                         </div>
                         <div class="card-body table-responsive">
@@ -42,7 +40,7 @@
                                 <td>{{ $hotel->email_id }}</td>
                                 <td>{{ $hotel->created_at }}</td>
                                 <td class="text-primary">
-                                    <a href="{{ route('admin.inspirations.edit', ['lang' => $hotel->locale, 'id' => $hotel->id]) }}" title="Edit">
+                                    <a href="{{ route('admin.hotels.edit', ['lang' => $hotel->locale, 'id' => $hotel->id]) }}" title="Edit">
                                      <i class="fa fa-edit"></i>
                                     </a>
                                  @if($hotel->status==1)

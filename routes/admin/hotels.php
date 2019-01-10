@@ -13,3 +13,4 @@
 	Route::get('/hotels', 'Admin\HotelsController@index')->name('admin.hotels');
 	Route::post('/hotels/uploadcsv', 'Admin\HotelsController@uploadcsv')->name('admin.hotels.uploadcsv');
 	Route::delete('/hotels/del/{lang}/{id}', 'Admin\HotelsController@doDelete')->name('admin.hotels.del');
+	Route::get('/hotels/edit/{lang}/{id}', 'Admin\HotelsController@edit')->name('admin.hotels.edit');
