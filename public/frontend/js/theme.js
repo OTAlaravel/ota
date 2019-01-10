@@ -59,4 +59,9 @@ $(window).bind("scroll", function(){ //when the user is scrolling...
     }
 });
 
-
+ $(function () {
+        $(".date").datepicker({
+            autoclose: true,
+            todayHighlight: true
+        });
+    });

@@ -51,14 +51,8 @@
                         
                       <div class="form-group">
                         <select class="form-control">
-                          <option selected>Country</option>
-                          <option>Country1</option>
-                          <option>Country2</option>
-                          <option>Country3</option>
-                          <option>Country4</option>
-                          <option>Country5</option>
-                          <option>Country6</option>
-                          <option>Country7</option>
+                          <option>Country</option>
+                          <?php countryOption(''); ?>
                         </select>
                       </div>
              

@@ -12,3 +12,4 @@
 <link href="{{ asset('frontend/css/animate.css') }}" rel="stylesheet">
 <link href="{{ asset('frontend/css/t-datepicker.min.css') }}" rel="stylesheet" type="text/css">
 <link href="{{ asset('frontend/css/responsive.css') }}" rel="stylesheet">
+ <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/css/datepicker.css" rel="stylesheet" type="text/css" />
