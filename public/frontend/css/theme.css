@@ -2202,3 +2202,145 @@ a.BookNow:hover {
 	border: 1px solid #fac917;
 }
 /*====changes 27/12/2018======*/
+
+.sidenav ul {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+.sidenav ul .panel-heading {
+	background: transparent;
+	border: none;
+	color: #000;
+}
+.sidenav ul .panel.panel-primary {
+	border: none;
+	background: transparent;
+	box-shadow: none;
+}
+
+.sidenav ul {
+	list-style: none;
+	margin-top: 158px;
+	color: #fff;
+	padding: 0;
+}
+.sidenav ul a {
+	color: #fff;
+	font-size: 15px;
+	padding: 9px 30px;
+	width: 100%;
+	display: block;
+	border-bottom: 1px solid #1102aa;
+}
+.sidenav ul a i {
+	margin-right: 8px;
+	font-size: 13px;
+}
+.sidenav ul a:hover
+{
+	background: #1102aa;
+	text-decoration: none;
+}
+.sidenav {
+	margin-top: 0px;
+	width: 300px;
+	float: left;
+	position: fixed;
+	top: 0;
+	height: 100%;
+	background: #0d0469;
+	z-index: 99;
+}
+.dashboard_content {
+	padding: 15px;
+	width: 75%;
+	float: left;
+	margin-left: 323px;
+	min-height: 495px;
+}
+.month {
+  padding: 70px 25px;
+  width: 100%;
+  background: #1abc9c;
+  text-align: center;
+}
+
+.month ul {
+  margin: 0;
+  padding: 0;
+		list-style: none;
+}
+
+.month ul li {
+  color: white;
+  font-size: 20px;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+}
+
+.month .prev {
+  float: left;
+  padding-top: 10px;
+}
+
+.month .next {
+  float: right;
+  padding-top: 10px;
+}
+
+.weekdays {
+  margin: 0;
+  padding: 10px 0;
+  background-color: #ddd;
+
+}
+
+.weekdays li {
+  display: inline-block;
+  width: 13.6%;
+  color: #666;
+  text-align: center;
+}
+
+.days {
+  padding: 10px 0;
+  background: #eee;
+  margin: 0;
+}
+
+.days li {
+  list-style-type: none;
+  display: inline-block;
+  width: 13.6%;
+  text-align: center;
+  margin-bottom: 5px;
+  font-size:12px;
+  color: #777;
+}
+
+.days li .active {
+  padding: 5px;
+  background: #1abc9c;
+  color: white !important
+}
+.date .btn.btn-outline-secondary {
+	position: absolute;
+	border: 1px solid #ccc;
+	border-radius: 0px;
+}
+.list_header_account li ul {
+	padding: 0;
+}
+.list_header_account li ul li {
+	width: 100%;
+	margin: 0;
+}
+.list_header_account li ul li a {
+	background: transparent;
+	color: #000;
+	border-bottom: 1px solid #ccc;
+	border-radius: 0px;
+	font-weight: 500;
+	font-size: 14px;
+}

@@ -2,53 +2,116 @@
 @section('content')
 <!--Banner sec-->
 
-
-<section class="profile dashboard">
-        <div class="container">
-                <div class="row">
-                  <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
+<section class="profile dashboard hometop_gap">
                     <div class="sidenav">
                        <ul>
-                           <li></li>
-                           <li></li>
-                           <li></li>
-                           <li></li>
-                           <li></li>
-                           <li></li>
+                           <li>
+								<a href="#"><i class="fa fa-th-large" aria-hidden="true"></i>Dashboard</a>
+                          </li>
+                          <li>
+								<a href="#"><i class="fa fa-user" aria-hidden="true"></i>profile</a>
+                          </li>
+                          <li>
+								<a href="#"><i class="fa fa-th-large" aria-hidden="true"></i>Dashboard</a>
+                          </li>
+                          <li>
+								<a href="#"><i class="fa fa-th-large" aria-hidden="true"></i>Dashboard</a>
+                          </li>
+                          <li>
+								<a href="#"><i class="fa fa-user" aria-hidden="true"></i>profile</a>
+                          </li>
+                          <li>
+								<a href="#"><i class="fa fa-th-large" aria-hidden="true"></i>Dashboard</a>
+                          </li>
+                          <li>
+								<a href="#"><i class="fa fa-th-large" aria-hidden="true"></i>Dashboard</a>
+                          </li>
+                          <li>
+								<a href="#"><i class="fa fa-user" aria-hidden="true"></i>profile</a>
+                          </li>
+                          <li>
+								<a href="#"><i class="fa fa-th-large" aria-hidden="true"></i>Dashboard</a>
+                          </li>
                        </ul>
                     </div>
-                </div>
-                <div class="col-xs-12 col-sm-12 col-md-9 col-lg-9">
+    
+                      <div class="dashboard_content">
+
                                 <h1>Our Dashboard</h1>
                                 
-                                <div class="owl-carousel owl-theme" id="client_logo_slider">
-                                    <div class="item">
-                                            <div class="logo_box_inner"> <img src="{{ asset('frontend/images/partners/1.jpg') }}" /> </div>
-                                    </div>
-                                    <div class="item">
-                                            <div class="logo_box_inner"> <img src="{{ asset('frontend/images/partners/2.jpg') }}" /> </div>
-                                    </div>
-                                    <div class="item">
-                                            <div class="logo_box_inner"> <img src="{{ asset('frontend/images/partners/3.jpg') }}" /> </div>
-                                    </div>
-                                    <div class="item">
-                                            <div class="logo_box_inner"> <img src="{{ asset('frontend/images/partners/4.jpg') }}" /> </div>
-                                    </div>
-                                    <div class="item">
-                                            <div class="logo_box_inner"> <img src="{{ asset('frontend/images/partners/5.jpg') }}" /> </div>
-                                    </div>
-                                    <div class="item">
-                                            <div class="logo_box_inner"> <img src="{{ asset('frontend/images/partners/6.jpg') }}" /> </div>
-                                    </div>
-                                    <div class="item">
-                                            <div class="logo_box_inner"> <img src="{{ asset('frontend/images/partners/7.jpg') }}" /> </div>
-                                    </div>
-                            </div>
+                                <div class="row">
+                                	<div class="col-md-12">
+                                
+                                <div class="month">      
+  <ul>
+    <li class="prev">&#10094;</li>
+    <li class="next">&#10095;</li>
+    <li>
+      August<br>
+      <span style="font-size:18px">2017</span>
+    </li>
+  </ul>
+</div>
+
+<ul class="weekdays">
+  <li>Mo</li>
+  <li>Tu</li>
+  <li>We</li>
+  <li>Th</li>
+  <li>Fr</li>
+  <li>Sa</li>
+  <li>Su</li>
+</ul>
+
+<ul class="days">  
+  <li>1</li>
+  <li>2</li>
+  <li>3</li>
+  <li>4</li>
+  <li>5</li>
+  <li>6</li>
+  <li>7</li>
+  <li>8</li>
+  <li>9</li>
+  <li><span class="active">10</span></li>
+  <li>11</li>
+  <li>12</li>
+  <li>13</li>
+  <li>14</li>
+  <li>15</li>
+  <li>16</li>
+  <li>17</li>
+  <li>18</li>
+  <li>19</li>
+  <li>20</li>
+  <li>21</li>
+  <li>22</li>
+  <li>23</li>
+  <li>24</li>
+  <li>25</li>
+  <li>26</li>
+  <li>27</li>
+  <li>28</li>
+  <li>29</li>
+  <li>30</li>
+  <li>31</li>
+</ul>
                                 
                         </div>
-
-                </div>
-        </div>
+                        <div class="col-md-6">
+                        	blog 1
+                        </div>
+                        <div class="col-md-6">
+                    		blog 2
+                        </div>
+					 </div>
+					  </div>
+					  
+					 
 </section>
+<div class="clearfix"></div>
+
+
+
 
 @endsection

@@ -7,6 +7,7 @@
 <script src="{{ asset('frontend/js/wow.js') }}"></script> 
 <script src="{{ asset('frontend/js/theme.js') }}"></script> 
 <script src="{{ asset('frontend/js/t-datepicker.js') }}"></script> 
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/js/bootstrap-datepicker.js"></script>
 <!-- Gallery Load More and top script Script--> 
 <script>   
  $(function () {

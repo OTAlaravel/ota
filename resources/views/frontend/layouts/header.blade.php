@@ -44,6 +44,7 @@
    </div>
   </div>
 </section>
+
 <!-- Navigation Sec-->
 <section class="navigation_sec" id="sticky-wrap">
   <div class="container">
@@ -80,6 +81,8 @@
     </div>
     <div class="clearfix"></div>
   </div>
+
+<?php if(Request::segment(1)!='users'){ ?>
 <form id="desk_search" action="{{route('hotels.search')}}" method="get">
   <div class="header_search_sec" id="desktop_search">
     <div class="container">
@@ -211,6 +214,7 @@
     </section>
   </div>
   </form>
+  <?php } ?>
   </section>
 <!--/////////////////////////////////////////-->
 </div>

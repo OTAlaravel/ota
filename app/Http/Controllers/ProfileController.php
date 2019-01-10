@@ -23,6 +23,22 @@ class ProfileController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $user = auth('web')->user();
+        
+        if($user->role=1){
+          return view('frontend.Hotelier.dashboard');
+        }else{
+          return view('frontend.customer.dashboard');
+        }
+        
+    }
+    public function profile()
+    {
+       $user = auth('web')->user();
+       if($user->role=1){
+          return view('frontend.Hotelier.profile');
+        }else{
+          return view('frontend.customer.profile');
+        }
     }
 }
