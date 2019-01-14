@@ -14,6 +14,7 @@
   @include('frontend.layouts.footer')
 
   @include('frontend.layouts.foot')
+ 
 
 </body>
 </html>

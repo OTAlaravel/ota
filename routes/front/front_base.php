@@ -26,3 +26,4 @@
    require(base_path() . '/routes/front/hotels.php');
    require(base_path() . '/routes/front/pages.php');
    require(base_path() . '/routes/front/cart.php');
+   require(base_path() . '/routes/front/ajax.php');
