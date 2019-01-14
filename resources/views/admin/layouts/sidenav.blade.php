@@ -51,25 +51,6 @@
                 </a>
             </li>
 
-            {{--  <li class="nav-item ">
-            <a class="nav-link" data-toggle="collapse" href="#pagesExamples">
-              <i class="material-icons">image</i>
-              <p> Pages
-                <b class="caret"></b>
-              </p>
-            </a>
-            <div class="collapse" id="pagesExamples">
-              <ul class="nav">
-                <li class="nav-item ">
-                  <a class="nav-link" href="../examples/pages/pricing.html">
-                    <span class="sidebar-mini"> P </span>
-                    <span class="sidebar-normal"> Pricing </span>
-                  </a>
-                </li>
-               
-              </ul>
-            </div>
-          </li> --}}
             <!-- Masters -->
             <li class="nav-item">
                 <a class="nav-link" data-toggle="collapse" href="#masters" >
@@ -113,6 +94,28 @@
                     <i class="material-icons">person</i>
                     <p>Users management</p>
                 </a>
+            </li>
+
+            <!-- Settings -->
+            <li class="nav-item">
+                <a class="nav-link" data-toggle="collapse" href="#settings" >
+                    <i class="material-icons">build</i>
+                    <p>Settings
+                  <b class="caret"></b>
+                  </p>
+                </a>
+                <div class="collapse" id="settings">
+                    <ul class="nav">
+                        <li class="nav-item {{ Request::is('admin/countries*') ? 'active' : '' }}">
+                            <a href="{{ route('admin.countries') }}" class="nav-link">General<i class="material-icons">fiber_manual_record</i>
+                            
+                            </a>
+                        </li>
+                        <li class="nav-item {{ Request::is('admin/states*') ? 'active' : '' }}">
+                            <a href="{{ route('admin.states') }}" class="nav-link">Social Links<i class="material-icons">fiber_manual_record</i></a>
+                        </li>
+                    </ul>
+                </div>
             </li>
 
             <!-- Testimonials -->

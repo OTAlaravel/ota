@@ -31,5 +31,6 @@
 	require(base_path() . '/routes/admin/experiences.php');
 	require(base_path() . '/routes/admin/hotels.php');
 	require(base_path() . '/routes/admin/regions.php');
+	require(base_path() . '/routes/admin/settings.php');
 
 
