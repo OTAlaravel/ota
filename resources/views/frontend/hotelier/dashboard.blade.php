@@ -3,55 +3,20 @@
 <!--Banner sec-->
 
 <section class="profile dashboard hometop_gap">
-                    <div class="sidenav">
-                       <ul>
-                           <li>
-								<a href="#"><i class="fa fa-th-large" aria-hidden="true"></i>Dashboard</a>
-                          </li>
-                          <li>
-								<a href="#"><i class="fa fa-user" aria-hidden="true"></i>profile</a>
-                          </li>
-                          <li>
-								<a href="#"><i class="fa fa-th-large" aria-hidden="true"></i>Dashboard</a>
-                          </li>
-                          <li>
-								<a href="#"><i class="fa fa-th-large" aria-hidden="true"></i>Dashboard</a>
-                          </li>
-                          <li>
-								<a href="#"><i class="fa fa-user" aria-hidden="true"></i>profile</a>
-                          </li>
-                          <li>
-								<a href="#"><i class="fa fa-th-large" aria-hidden="true"></i>Dashboard</a>
-                          </li>
-                          <li>
-								<a href="#"><i class="fa fa-th-large" aria-hidden="true"></i>Dashboard</a>
-                          </li>
-                          <li>
-								<a href="#"><i class="fa fa-user" aria-hidden="true"></i>profile</a>
-                          </li>
-                          <li>
-								<a href="#"><i class="fa fa-th-large" aria-hidden="true"></i>Dashboard</a>
-                          </li>
-                       </ul>
-                    </div>
-    
-                      <div class="dashboard_content">
-
-                                <h1>Our Dashboard</h1>
-                                
-                                <div class="row">
-                                	<div class="col-md-12">
-                                
-                                <div class="month">      
-  <ul>
-    <li class="prev">&#10094;</li>
-    <li class="next">&#10095;</li>
-    <li>
-      August<br>
-      <span style="font-size:18px">2017</span>
-    </li>
-  </ul>
-</div>
+    @include('frontend.layouts.hotelier_sidenav')
+       <div class="dashboard_content">
+        <h1>Our Dashboard</h1>
+           <div class="row">
+            <div class="col-md-12">
+              <div class="month">      
+              <ul>
+                  <li class="prev">&#10094;</li>
+                  <li class="next">&#10095;</li>
+                  <li>August<br>
+                  <span style="font-size:18px">2017</span>
+                    </li>
+              </ul>
+            </div>
 
 <ul class="weekdays">
   <li>Mo</li>
