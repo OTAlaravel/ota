@@ -5,37 +5,7 @@
 
 
 <section class="profile dashboard hometop_gap">
-                    <div class="sidenav">
-                       <ul>
-                           <li>
-								<a href="#"><i class="fa fa-th-large" aria-hidden="true"></i>Dashboard</a>
-                          </li>
-                          <li>
-								<a href="#"><i class="fa fa-user" aria-hidden="true"></i>profile</a>
-                          </li>
-                          <li>
-								<a href="#"><i class="fa fa-th-large" aria-hidden="true"></i>Dashboard</a>
-                          </li>
-                          <li>
-								<a href="#"><i class="fa fa-th-large" aria-hidden="true"></i>Dashboard</a>
-                          </li>
-                          <li>
-								<a href="#"><i class="fa fa-user" aria-hidden="true"></i>profile</a>
-                          </li>
-                          <li>
-								<a href="#"><i class="fa fa-th-large" aria-hidden="true"></i>Dashboard</a>
-                          </li>
-                          <li>
-								<a href="#"><i class="fa fa-th-large" aria-hidden="true"></i>Dashboard</a>
-                          </li>
-                          <li>
-								<a href="#"><i class="fa fa-user" aria-hidden="true"></i>profile</a>
-                          </li>
-                          <li>
-								<a href="#"><i class="fa fa-th-large" aria-hidden="true"></i>Dashboard</a>
-                          </li>
-                       </ul>
-                    </div>
+                     @include('frontend.layouts.hotelier_sidenav')
     
                       <div class="dashboard_content">
 
