@@ -42,6 +42,11 @@
                 {{ csrf_field() }}
                 <input type="hidden" id="lang_code" name="locale" value="en">
                 <div class="row">
+                  <div class="col-sm-12">
+                    <h3>Hotel Details</h3>
+                  </div>
+                </div>
+                <div class="row">
                   <div class="col-md-6">
                     <div class="form-group">
                       <label class="bmd-label-floating">Name</label>
@@ -113,7 +118,7 @@
                 </div>
                 <div class="row">
                   <div class="col-md-12">
-                    <h3>Accommodations</h3>
+                    <h3>Hotel Accommodations</h3>
                     <div class="form-group">
                       @foreach ($accommodations as $aData)
                       <?php $checked = '';  ?>
@@ -133,7 +138,7 @@
                 </div>
                 <div class="row">
                   <div class="col-md-12">
-                    <h3>Species</h3>
+                    <h3>Hotel Species</h3>
                     <div class="form-group">
                       @foreach ($species as $sData)
                       <?php $checked = '';  ?>
@@ -153,7 +158,7 @@
                 </div>
                 <div class="row">
                   <div class="col-md-12">
-                    <h3>Inspirations</h3>
+                    <h3>Hotel Inspirations</h3>
                     <div class="form-group">
                       @foreach ($inspirations as $iData)
                       <?php $checked = '';  ?>
@@ -173,7 +178,7 @@
                 </div>
                 <div class="row">
                   <div class="col-md-12">
-                    <h3>Experiences</h3>
+                    <h3>Hotel Experiences</h3>
                     <div class="form-group">
                       @foreach ($experiences as $eData)
                       <?php $checked = '';  ?>
@@ -193,7 +198,7 @@
                 </div>
                 <div class="row">
                   <div class="col-md-12">
-                    <h3>Administrator's Contact Information</h3>
+                    <h3>Hotel Administrator's Contact Information</h3>
                   </div>
                 </div>
                 <div class="row">
@@ -225,7 +230,7 @@
               </div>
               <div class="row">
                 <div class="col-md-12">
-                 <h3>Rooms</h3>
+                 <h3>Hotel Rooms</h3>
                  <p>Coming soon...</p>
                 </div>
               </div>
