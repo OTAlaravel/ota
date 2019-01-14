@@ -11,4 +11,8 @@ class Regions extends Model
     public $translatedAttributes = ['locale', 'regions_name'];
 
     protected $fillable = ['locale', 'regions_name']; 
+
+    function hotels(){
+    	$this->hasMany('App\Hotels');
+    }
 }

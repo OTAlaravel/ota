@@ -106,8 +106,8 @@
                 </a>
                 <div class="collapse" id="settings">
                     <ul class="nav">
-                        <li class="nav-item {{ Request::is('admin/countries*') ? 'active' : '' }}">
-                            <a href="{{ route('admin.countries') }}" class="nav-link">General<i class="material-icons">fiber_manual_record</i>
+                        <li class="nav-item {{ Request::is('admin/settings/general') ? 'active' : '' }}">
+                            <a href="{{ route('admin.settings.general') }}" class="nav-link">General<i class="material-icons">fiber_manual_record</i>
                             
                             </a>
                         </li>

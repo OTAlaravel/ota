@@ -24,9 +24,11 @@
                            <table class="table" id="order-listing">
                             <thead class=" text-primary"> 
                                 <th>Name</th>
+                                <th>Region</th>
+                                <th>Country</th>
+                                <th>State</th>
                                 <th>Town</th>
                                 <th>Email</th>
-                                <th>Created at</th>
                                 <th>Action</th>
                             </thead>
                         <tbody>
@@ -36,22 +38,16 @@
                             @if($hotel->locale == $lang)
                             <tr>
                                 <td>{{ $hotel->hotels_name }}</td>
+                                <td>{{ $hotel->region->regions_name }}</td>
+                                <td>{{ $hotel->country->countries_name }}</td>
+                                <td>{{ $hotel->state->states_name }}</td>
                                 <td>{{ $hotel->town }}</td>
                                 <td>{{ $hotel->email_id }}</td>
-                                <td>{{ $hotel->created_at }}</td>
                                 <td class="text-primary">
                                     <a href="{{ route('admin.hotels.edit', ['lang' => $hotel->locale, 'id' => $hotel->id]) }}" title="Edit">
                                      <i class="fa fa-edit"></i>
                                     </a>
-                                 @if($hotel->status==1)
-                                 <a href="{{ route('admin.inspirations.edit', ['lang' => $hotel->locale, 'id' => $hotel->id]) }}" style="color:#4caf50" title="Published">
-                                     <i  class="fa fa-toggle-on" aria-hidden="true"></i>
-                                 </a>
-                                 @else
-                                 <a href="{{ route('admin.inspirations.edit', ['lang' => $hotel->locale, 'id' => $hotel->id]) }}" style="color:red" title="Draft">
-                                     <i class="fa fa-toggle-off" aria-hidden="true"></i>
-                                 </a>
-                                 @endif
+                             
                                  <form id="delete-form-{{ $hotel->id }}" method="post" action="{{ route('admin.hotels.del', ['lang' => $hotel->locale, 'id' => $hotel->id]) }}" style="display: none;">
                                     {{ csrf_field() }}
                                     {{ method_field('DELETE') }}

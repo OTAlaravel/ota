@@ -2344,3 +2344,8 @@ a.BookNow:hover {
 	font-weight: 500;
 	font-size: 14px;
 }
+
+table thead tr{
+	background: #110591;
+	color: #fff;
+}
