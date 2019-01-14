@@ -11,4 +11,8 @@ class Countries extends Model
     public $translatedAttributes = ['locale', 'countries_name','countries_sortname', 'countries_phonecode'];
 
     protected $fillable = ['locale', 'countries_name','countries_sortname', 'countries_phonecode'];
+    
+    function hotels(){
+    	$this->hasMany('App\Hotels');
+    }
 }

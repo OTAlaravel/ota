@@ -11,4 +11,16 @@ class Hotels extends Model
     public $translatedAttributes = ['locale', 'hotels_name', 'hotels_slug', 'hotels_desc'];
 
     protected $fillable = ['locale', 'hotels_name', 'hotels_slug', 'hotels_desc'];
+
+    function region(){
+    	return $this->belongsTo('App\Regions');
+    }
+
+    function country(){
+    	return $this->belongsTo('App\Countries');
+    }
+
+    function state(){
+    	return $this->belongsTo('App\States');
+    }
 }

@@ -11,4 +11,8 @@ class States extends Model
     public $translatedAttributes = ['locale', 'states_name','countries_id'];
 
     protected $fillable = ['locale', 'states_name','countries_id'];
+
+    function hotels(){
+    	$this->hasMany('App\Hotels');
+    }
 }
