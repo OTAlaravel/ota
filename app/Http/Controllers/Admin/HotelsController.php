@@ -5,10 +5,14 @@ use App\User;
 use Mail;
 use App\Hotels;
 use App\Species;
+use App\Accommodations;
+use App\Inspirations;
+use App\Experiences;
+use App\HotelContact;
 use App\HotelSpeciesRelation;
 use App\HotelAccommodationRelation;
 use App\HotelExperiencesRelation;
-use App\HotelContact;
+use App\HotelInspirationsRelation;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -265,13 +269,82 @@ class HotelsController extends Controller
         $hotels = Hotels::where('id', '=' , $id)->get()->first();
         $hotels->translate($lang);
         $species = Species::all();
+        $accommodations = Accommodations::all();
+        $inspirations = Inspirations::all();
+        $experiences = Experiences::all();
         $species_relation = HotelSpeciesRelation::where('hotel_id', '=' , $id)->get();
-        return view('admin.hotels.edit', compact('hotels', 'species', 'species_relation'));
+        $accommodation_relation = HotelAccommodationRelation::where('hotel_id', '=' , $id)->get();
+        $inspirations_relation = HotelInspirationsRelation::where('hotel_id', '=' , $id)->get();
+        $experiences_relation = HotelExperiencesRelation::where('hotel_id', '=' , $id)->get();
+        $hotelcontact = HotelContact::where('hotel_id', '=' , $id)->get()->first();
+        return view('admin.hotels.edit', compact('hotels', 'species', 'species_relation', 'accommodations', 'accommodation_relation', 'inspirations', 'experiences', 'inspirations_relation', 'experiences_relation', 'hotelcontact'));
     }
 
-    public function update(Request $request, $id)
-    {
-        //
+    public function update(Request $request, $lang, $id)
+    {   
+        $lang =  \App::getLocale(); 
+        $hotels = Hotels::find($id);
+        $hotels->locale = $request->locale;
+        $hotels->hotels_name = $request->hotels_name;
+        $hotels->hotels_desc = $request->hotels_desc;
+        $hotels->enthusiast_services = $request->enthusiast_services;
+        $hotels->distance_airport = $request->distance_airport;
+        $hotels->transfers_mode = $request->transfers_mode;
+        $hotels->services_amenities = $request->services_amenities;
+        $hotels->region_id = $request->region_id;
+        $hotels->country_id = $request->country_id;
+        $hotels->state_id = $request->state_id;
+        $hotels->town = $request->town;
+        $hotels->activity_season = $request->activity_season;
+        $hotels->email_id = $request->email_id;
+        $hotels->nearest_airport = $request->nearest_airport;
+        $hotels->additional_information = $request->additional_information;
+        $hotels->save();
+        $accommodation_relation = HotelAccommodationRelation::where('hotel_id', '=' , $id)->get()->toArray();
+        $accommodation_ids = $request->accommodation_id;
+        $prev_accommodation_ids = array();
+        for ($i=0; $i < count($accommodation_relation) ; $i++) { 
+            array_push($prev_accommodation_ids, $accommodation_relation[$i]['accommodation_id']);
+        }
+        // print_r($accommodation_ids);
+        // print_r($prev_accommodation_ids);
+
+        if (empty($prev_accommodation_ids)) {
+            for ($i=0; $i < count($accommodation_ids) ; $i++) { 
+                $accommodation_relation = new HotelAccommodationRelation;
+                $accommodation_relation->accommodation_id = $accommodation_ids[$i];
+                $accommodation_relation->hotel_id = $id;
+                $accommodation_relation->save();
+            }
+        }else{
+             
+            $accommodations = array_merge(array_diff($accommodation_ids, $prev_accommodation_ids), array_diff($prev_accommodation_ids, $accommodation_ids));
+            /*print_r($accommodations);
+            exit();*/
+            if(!empty($accommodations)){
+               
+                $del_accommodations = array_diff($accommodation_ids,$accommodations);
+
+                if(!empty($del_accommodations)){
+                    for ($j=0; $j < count($del_accommodations); $j++) 
+                    { 
+                        HotelAccommodationRelation::where('hotel_id', '=', $id)->where('accommodation_id', '=', $del_accommodations[$j])->delete();
+                    }
+                }
+                for ($i=0; $i < count($accommodations) ; $i++) { 
+                    $accommodation_relation = new HotelAccommodationRelation;
+                    $accommodation_relation->accommodation_id = $accommodations[$i];
+                    $accommodation_relation->hotel_id = $id;
+                    $accommodation_relation->save();
+                }
+            }
+
+        }
+        return redirect()->back()->with('message', 'Hotels updated successfully!');
+        /*echo '<pre>';
+        print_r($request->all());
+        echo '</pre>';*/
+        exit();
     }
 
     public function doDelete($lang, $id)

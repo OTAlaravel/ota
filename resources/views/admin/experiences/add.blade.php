@@ -35,7 +35,7 @@
           </div>
           <div class="card-body">
             @include('admin.layouts.messages')
-            <form id="AddNewExperiences" method="post" action="{{ route('admin.experiences.doadd') }}">
+            <form id="AddNewExperiences" method="post" action="{{ route('admin.experiences.doadd') }}" enctype="multipart/form-data">
               {{ csrf_field() }}
               <input type="hidden" id="lang_code" name="locale" value="en">
               <div class="row">

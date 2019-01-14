@@ -38,7 +38,7 @@
             <?php 
               $lang = @\Session::get('language');
             ?>
-            <form id="EditExperiences" method="post" action="{{ route('admin.experiences.update', ['lang' => $lang, 'id' => $experience->id]) }}">
+            <form id="EditExperiences" method="post" action="{{ route('admin.experiences.update', ['lang' => $lang, 'id' => $experience->id]) }}" enctype="multipart/form-data">
               {{ csrf_field() }}
               <input type="hidden" id="lang_code" name="locale" value="en">
               <div class="row">
