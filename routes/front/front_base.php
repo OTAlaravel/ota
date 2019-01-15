@@ -17,11 +17,13 @@
     });
 
     Auth::routes();
-	Route::get('/home', function () {
+	  Route::get('/home', function () {
       $user = auth('web')->user();
       return redirect('/users/dashboard');
     });
    Route::get('/users/logout', 'Auth\LoginController@userLogout')->name('user.logout');
+   Route::post('/users/register', 'Auth\RegisterController@doCreate')->name('user.register');
+   
    require(base_path() . '/routes/front/user.php');
    require(base_path() . '/routes/front/hotels.php');
    require(base_path() . '/routes/front/pages.php');

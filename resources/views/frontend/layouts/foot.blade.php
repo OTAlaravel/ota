@@ -8,6 +8,7 @@
 <script src="{{ asset('frontend/js/theme.js') }}"></script> 
 <script src="{{ asset('frontend/js/t-datepicker.js') }}"></script> 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/js/bootstrap-datepicker.js"></script>
+<script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
 <script type="text/javascript" src="{{ asset('backend/froala/js/froala_editor.min.js') }}" ></script>
 <script type="text/javascript" src="{{ asset('backend/froala/js/plugins/align.min.js') }}"></script>
 <script type="text/javascript" src="{{ asset('backend/froala/js/plugins/code_beautifier.min.js') }}"></script>
