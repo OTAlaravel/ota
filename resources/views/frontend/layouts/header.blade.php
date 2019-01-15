@@ -14,7 +14,7 @@
     <div class="col-md-3 col-sm-4 header_top_right">
       <div class="header_top_right_inner">
         <ul class="list_header_account">
-          <li class="dropdown">
+          <!--<li class="dropdown">
              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">
                           Language <span class="caret"></span></a>
                   <ul class="dropdown-menu">
@@ -22,14 +22,14 @@
                       <li> <a href="">My profile </a> </li>
                       <li> <a href="">Logout </a> </li>
                   </ul>
-          </li>
+          </li> -->
               @guest
                  <li><a href="{{ route('login') }}">Sign In</a></li>
                  <!--<li><a href="{{ route('register') }}">Register</a></li> -->
                @else
                    <li class="dropdown">
                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">
-                          Profile <span class="caret"></span></a>
+                          {{ Auth::user()->username}} <span class="caret"></span></a>
                          <ul class="dropdown-menu">
                            <li> <a href="{{ route('user.dashboard') }}">Dashboard</a> </li>
                            <li> <a href="{{ route('user.profile') }}">My profile </a> </li>
