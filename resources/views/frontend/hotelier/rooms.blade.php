@@ -3,52 +3,52 @@
 <!--Banner sec-->
 
 
-<section class="profile dashboard">
-        <div class="container">
-                <div class="row">
-                  <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
-                    <div class="sidenav">
-                       <ul>
-                           <li></li>
-                           <li></li>
-                           <li></li>
-                           <li></li>
-                           <li></li>
-                           <li></li>
-                       </ul>
-                    </div>
-                </div>
-                <div class="col-xs-12 col-sm-12 col-md-9 col-lg-9">
-                                <h1>Our Dashboard</h1>
-                                
-                                <div class="owl-carousel owl-theme" id="client_logo_slider">
-                                    <div class="item">
-                                            <div class="logo_box_inner"> <img src="{{ asset('frontend/images/partners/1.jpg') }}" /> </div>
-                                    </div>
-                                    <div class="item">
-                                            <div class="logo_box_inner"> <img src="{{ asset('frontend/images/partners/2.jpg') }}" /> </div>
-                                    </div>
-                                    <div class="item">
-                                            <div class="logo_box_inner"> <img src="{{ asset('frontend/images/partners/3.jpg') }}" /> </div>
-                                    </div>
-                                    <div class="item">
-                                            <div class="logo_box_inner"> <img src="{{ asset('frontend/images/partners/4.jpg') }}" /> </div>
-                                    </div>
-                                    <div class="item">
-                                            <div class="logo_box_inner"> <img src="{{ asset('frontend/images/partners/5.jpg') }}" /> </div>
-                                    </div>
-                                    <div class="item">
-                                            <div class="logo_box_inner"> <img src="{{ asset('frontend/images/partners/6.jpg') }}" /> </div>
-                                    </div>
-                                    <div class="item">
-                                            <div class="logo_box_inner"> <img src="{{ asset('frontend/images/partners/7.jpg') }}" /> </div>
-                                    </div>
-                            </div>
-                                
-                        </div>
+<section class="profile dashboard hometop_gap">
+ @include('frontend.layouts.hotelier_sidenav')
 
-                </div>
-        </div>
+ <div class="dashboard_content">
+
+  <h1>Our Rooms</h1>
+  <div class="row">
+    <div class="col-sm-12">
+      <a href="{{ route('user.hotels.rooms.add', ['id' => $id]) }}" class="btn btn-success"><i class="fa fa-plus" aria-hidden="true"></i> Add Room</a>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-12">
+      <table class="table table-bordered table-hover">
+        <thead>
+          <tr>
+            <th scope="col">Room Type</th>
+            <th scope="col">Adult Capacity</th>
+            <th scope="col">Child Capacity</th>
+            <th scope="col">Regular Price</th>
+            <th scope="col">Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          @foreach($rooms as $room)
+         <tr>
+           <td>{{ $room->type }}</td>
+           <td>{{ $room->adult_capacity }}</td>
+           <td>{{ $room->child_capacity }}</td>
+           <td>{{ $room->regular_price }}</td>
+           <td>
+             <a href="" class="btn btn-info"><i class="fa fa-edit" aria-hidden="true"></i> Edit</a>
+           </td>
+         </tr>
+         @endforeach
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+</div>
+</div>
+</div>
+
+
 </section>
+<div class="clearfix"></div>
 
 @endsection

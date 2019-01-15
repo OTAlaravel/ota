@@ -36,7 +36,7 @@
             <td>{{ $hotel->email_id }}</td>
             <td>
               <a href="" class="btn btn-warning"><i class="fa fa-eye"></i> View</a>
-              <a href="" class="btn btn-success"><i class="fa fa-home"></i> Rooms</a>
+              <a href="{{ route('user.hotels.rooms', ['id' => $hotel->id]) }}" class="btn btn-success"><i class="fa fa-home"></i> Rooms</a>
               <a href="{{ route('user.hotels.edit', ['id' => $hotel->id]) }}" class="btn btn-info"><i class="fa fa-edit"></i> Edit</a>
             </td>
           </tr>

@@ -152,4 +152,5 @@ class HotelsController extends Controller
         return redirect()->back()->with('message', 'Hotels updated successfully!');
 
     }
+
 }
